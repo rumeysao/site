@@ -103,6 +103,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Fond\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\images.png" />
     <Content Include="Models\data.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>data.edmx</DependentUpon>
@@ -132,8 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CariController.cs" />
+    <Compile Include="Controllers\FaturaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
+    <Compile Include="Controllers\MalzemeController.cs" />
+    <Compile Include="Controllers\StokController.cs" />
     <Compile Include="Controllers\YetkiliController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -199,6 +204,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Cari\Index.cshtml" />
+    <Content Include="Views\Stok\Index.cshtml" />
+    <Content Include="Views\Fatura\Index.cshtml" />
+    <Content Include="Views\Malzeme\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
