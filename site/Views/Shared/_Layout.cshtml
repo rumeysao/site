@@ -19,7 +19,7 @@
                 </button>
                 @if (Session["username"] == null)
                 {
-                    
+
                     @Html.ActionLink("ESBİ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
                 }
@@ -59,6 +59,6 @@
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
-    @RenderSection("scripts",required:false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>

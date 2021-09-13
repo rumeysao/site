@@ -96,7 +96,7 @@
       <PropertyRef Name="M_ID" />
     </Key>
     <Property Name="M_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Aktif" Type="Int32" />
+    <Property Name="Aktif" Type="Boolean" />
     <Property Name="MalzemeKodu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="MalzemeAdi" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
     <Property Name="OzelKod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />

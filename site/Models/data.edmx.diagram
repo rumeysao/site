@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a92cc6fde0b8416488bb731bbdfe5ee6" Name="Diagram1">
+      <Diagram DiagramId="4ac281ae60df4bbcb4bf90836cfaa81b" Name="Diagram1">
         <EntityTypeShape EntityType="ProjeStajModel.Birim" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjeStajModel.Cariler" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjeStajModel.Fatura" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />

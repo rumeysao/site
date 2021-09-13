@@ -34,4 +34,24 @@ textarea {
         color: white;
  }
 
+#menu{
+    width: 1024px;
+    background-color: #008CBA;
 
+}
+    #menu li {
+        width: 160px;
+        height:30px;
+        padding-top:10px;
+        padding-left:25px;
+        padding-right:15px;
+        float :left;
+        font-size:18px;
+    }
+        #menu li a{
+            color:beige;
+        }
+            #menu li a:hover{
+                color:aliceblue;
+                font-size:22px;
+            }

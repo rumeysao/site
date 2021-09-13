@@ -21,7 +21,7 @@ namespace site.Models
         }
     
         public int M_ID { get; set; }
-        public Nullable<int> Aktif { get; set; }
+        public Nullable<bool> Aktif { get; set; }
         public string MalzemeKodu { get; set; }
         public string MalzemeAdi { get; set; }
         public string OzelKod { get; set; }
