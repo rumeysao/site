@@ -17,10 +17,10 @@ namespace site.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FaturaSatirlari()
         {
-            this.Carilers = new HashSet<Cariler>();
+            this.Caris = new HashSet<Cari>();
         }
     
-        public int FS_ID { get; set; }
+        public int Faturasatirlari_ID { get; set; }
         public Nullable<int> TRCode { get; set; }
         public Nullable<System.DateTime> Tarih { get; set; }
         public Nullable<int> FaturaReferansi { get; set; }
@@ -28,18 +28,19 @@ namespace site.Models
         public Nullable<double> Toplam { get; set; }
         public Nullable<double> Fiyat { get; set; }
         public Nullable<int> BirimReferansi { get; set; }
-        public Nullable<int> BirimSetReferans { get; set; }
+        public Nullable<int> BİrimSetReferansi { get; set; }
         public Nullable<double> KDV { get; set; }
-        public Nullable<double> NetKDVMiktari { get; set; }
+        public Nullable<double> NetKDV { get; set; }
         public Nullable<double> KDVEsasTutari { get; set; }
-        public Nullable<int> B_ID { get; set; }
-        public Nullable<int> F_ID { get; set; }
-        public Nullable<int> M_ID { get; set; }
-        public Nullable<int> U_ID { get; set; }
-        public Nullable<bool> İptal { get; set; }
+        public string Iptal { get; set; }
+        public Nullable<int> Birim_ID { get; set; }
+        public Nullable<int> Fatura_ID { get; set; }
+        public Nullable<int> Malzeme_ID { get; set; }
+        public Nullable<int> Kullanici_ID { get; set; }
     
+        public virtual Birim Birim { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cariler> Carilers { get; set; }
+        public virtual ICollection<Cari> Caris { get; set; }
         public virtual Fatura Fatura { get; set; }
         public virtual Kullanici Kullanici { get; set; }
         public virtual Malzemeler Malzemeler { get; set; }

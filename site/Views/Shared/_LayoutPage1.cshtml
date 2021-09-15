@@ -47,42 +47,33 @@
                 }
 
             </div>
+            <center>
+                <button class="button" loadXMLDoc()">  @Html.ActionLink("CARİ", "Index","Caris", new { area = "" }, new { @class = "navbar-brand" })</button>
+                <button class="button" onclick="loadXMLDoc()">@Html.ActionLink("FATURALAR","Index","Faturas", new { area = "" }, new { @class = "navbar-brand" })</button>
+                <button class="button" onclick="loadXMLDoc()"> @Html.ActionLink("MALZEMELER","Index", "Malzemelers", new { area = "" }, new { @class = "navbar-brand" })</button>
+                <button class="button" onclick="loadXMLDoc()"> @Html.ActionLink("BİRİMLER", "Index","Birims", new { area = "" }, new { @class = "navbar-brand" })</button>
+            </center>
+            <script>
+
+
+                function loadXMLDoc() {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("demo").innerHTML =
+                                this.responseText;
+                        }
+                    };
+                    xhttp.open("GET", "xmlhttp_info.txt", true);
+                    xhttp.send();
+                }
+            </script>
         </div>
 
     </div>
 
 
-    <div class="form-horizontal">
-        
-            <div class="container">
-                <div class="navbar-nav">
-
-
-
-                    <button class="button" onclick="loadXMLDoc()">  @Html.ActionLink("CARİ", "Index", "Cari", new { area = "" }, new { @class = "navbar-brand" })</button>
-                    <button class="button" onclick="loadXMLDoc()">   @Html.ActionLink("STOKLAR", "Index", "Stok", new { area = "" }, new { @class = "navbar-brand" })</button>
-                    <button class="button" onclick="loadXMLDoc()">@Html.ActionLink("FATURALAR", "Index", "Fatura", new { area = "" }, new { @class = "navbar-brand" })</button>
-                    <button class="button" onclick="loadXMLDoc()"> @Html.ActionLink("MALZEMELER", "Index", "Malzeme", new { area = "" }, new { @class = "navbar-brand" })</button>
-                    <button class="button" onclick="loadXMLDoc()"> @Html.ActionLink("BİRİMLER", "Index", "Birimler", new { area = "" }, new { @class = "navbar-brand" })</button>
-                    <script>
-                        function loadXMLDoc() {
-                            var xhttp = new XMLHttpRequest();
-                            xhttp.onreadystatechange = function () {
-                                if (this.readyState == 4 && this.status == 200) {
-                                    document.getElementById("demo").innerHTML =
-                                        this.responseText;
-                                }
-                            };
-                            xhttp.open("GET", "xmlhttp_info.txt", true);
-                            xhttp.send();
-                        }
-                    </script>
-                </div>
-
-                </div>
-
-
-            </div>
+    
             <div class="container body-content">
                 @RenderBody()
                 <hr />

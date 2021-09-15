@@ -12,15 +12,11 @@ namespace site.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cariler
+    public partial class Cari
     {
-        public int C_ID { get; set; }
-        public Nullable<int> Aktif { get; set; }
+        public int Cari_ID { get; set; }
         public string CariKodu { get; set; }
-        public Nullable<int> FS_ID { get; set; }
         public string Tanim { get; set; }
-        public Nullable<int> F_ID { get; set; }
-        public Nullable<int> U_ID { get; set; }
         public string Adres { get; set; }
         public string Ulke { get; set; }
         public string Sehir { get; set; }
@@ -30,9 +26,12 @@ namespace site.Models
         public string Email { get; set; }
         public string Web { get; set; }
         public Nullable<int> PostaKodu { get; set; }
+        public Nullable<bool> Aktif { get; set; }
+        public Nullable<int> Fatura_ID { get; set; }
+        public Nullable<int> FaturaSatirlari_ID { get; set; }
+        public Nullable<int> Kullanici_ID { get; set; }
     
         public virtual Fatura Fatura { get; set; }
         public virtual FaturaSatirlari FaturaSatirlari { get; set; }
-        public virtual Kullanici Kullanici { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace site.Controllers
 {
     public class HomeController : Controller
     {
-        data db = new data();
+        veri db = new veri();
         public ActionResult Index()
         {
             return View();

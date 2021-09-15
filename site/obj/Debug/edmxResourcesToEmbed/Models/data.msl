@@ -1,25 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ProjeStajModelStoreContainer" CdmEntityContainer="data">
+  <EntityContainerMapping StorageEntityContainer="stajModelStoreContainer" CdmEntityContainer="veri">
     <EntitySetMapping Name="Birims">
-      <EntityTypeMapping TypeName="ProjeStajModel.Birim">
+      <EntityTypeMapping TypeName="stajModel.Birim">
         <MappingFragment StoreEntitySet="Birim">
-          <ScalarProperty Name="B_ID" ColumnName="B_ID" />
+          <ScalarProperty Name="Birim_ID" ColumnName="Birim_ID" />
           <ScalarProperty Name="BirimKodu" ColumnName="BirimKodu" />
           <ScalarProperty Name="BirimAdi" ColumnName="BirimAdi" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Carilers">
-      <EntityTypeMapping TypeName="ProjeStajModel.Cariler">
-        <MappingFragment StoreEntitySet="Cariler">
-          <ScalarProperty Name="C_ID" ColumnName="C_ID" />
-          <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+    <EntitySetMapping Name="Caris">
+      <EntityTypeMapping TypeName="stajModel.Cari">
+        <MappingFragment StoreEntitySet="Cari">
+          <ScalarProperty Name="Cari_ID" ColumnName="Cari_ID" />
           <ScalarProperty Name="CariKodu" ColumnName="CariKodu" />
-          <ScalarProperty Name="FS_ID" ColumnName="FS_ID" />
           <ScalarProperty Name="Tanim" ColumnName="Tanim" />
-          <ScalarProperty Name="F_ID" ColumnName="F_ID" />
-          <ScalarProperty Name="U_ID" ColumnName="U_ID" />
           <ScalarProperty Name="Adres" ColumnName="Adres" />
           <ScalarProperty Name="Ulke" ColumnName="Ulke" />
           <ScalarProperty Name="Sehir" ColumnName="Sehir" />
@@ -29,28 +25,32 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Web" ColumnName="Web" />
           <ScalarProperty Name="PostaKodu" ColumnName="PostaKodu" />
+          <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+          <ScalarProperty Name="Fatura_ID" ColumnName="Fatura_ID" />
+          <ScalarProperty Name="FaturaSatirlari_ID" ColumnName="FaturaSatirlari_ID" />
+          <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Faturas">
-      <EntityTypeMapping TypeName="ProjeStajModel.Fatura">
+      <EntityTypeMapping TypeName="stajModel.Fatura">
         <MappingFragment StoreEntitySet="Fatura">
-          <ScalarProperty Name="F_ID" ColumnName="F_ID" />
+          <ScalarProperty Name="Fatura_ID" ColumnName="Fatura_ID" />
           <ScalarProperty Name="TRCode" ColumnName="TRCode" />
           <ScalarProperty Name="FisNo" ColumnName="FisNo" />
           <ScalarProperty Name="Tarih" ColumnName="Tarih" />
           <ScalarProperty Name="Saat" ColumnName="Saat" />
           <ScalarProperty Name="İptal" ColumnName="İptal" />
           <ScalarProperty Name="ToplamKDV" ColumnName="ToplamKDV" />
-          <ScalarProperty Name="U_ID" ColumnName="U_ID" />
           <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+          <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="FaturaSatirlaris">
-      <EntityTypeMapping TypeName="ProjeStajModel.FaturaSatirlari">
+      <EntityTypeMapping TypeName="stajModel.FaturaSatirlari">
         <MappingFragment StoreEntitySet="FaturaSatirlari">
-          <ScalarProperty Name="FS_ID" ColumnName="FS_ID" />
+          <ScalarProperty Name="Faturasatirlari_ID" ColumnName="Faturasatirlari_ID" />
           <ScalarProperty Name="TRCode" ColumnName="TRCode" />
           <ScalarProperty Name="Tarih" ColumnName="Tarih" />
           <ScalarProperty Name="FaturaReferansi" ColumnName="FaturaReferansi" />
@@ -58,22 +58,22 @@
           <ScalarProperty Name="Toplam" ColumnName="Toplam" />
           <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
           <ScalarProperty Name="BirimReferansi" ColumnName="BirimReferansi" />
-          <ScalarProperty Name="BirimSetReferans" ColumnName="BirimSetReferans" />
+          <ScalarProperty Name="BİrimSetReferansi" ColumnName="BİrimSetReferansi" />
           <ScalarProperty Name="KDV" ColumnName="KDV" />
-          <ScalarProperty Name="NetKDVMiktari" ColumnName="NetKDVMiktari" />
+          <ScalarProperty Name="NetKDV" ColumnName="NetKDV" />
           <ScalarProperty Name="KDVEsasTutari" ColumnName="KDVEsasTutari" />
-          <ScalarProperty Name="B_ID" ColumnName="B_ID" />
-          <ScalarProperty Name="F_ID" ColumnName="F_ID" />
-          <ScalarProperty Name="M_ID" ColumnName="M_ID" />
-          <ScalarProperty Name="U_ID" ColumnName="U_ID" />
-          <ScalarProperty Name="İptal" ColumnName="İptal" />
+          <ScalarProperty Name="Iptal" ColumnName="Iptal" />
+          <ScalarProperty Name="Birim_ID" ColumnName="Birim_ID" />
+          <ScalarProperty Name="Fatura_ID" ColumnName="Fatura_ID" />
+          <ScalarProperty Name="Malzeme_ID" ColumnName="Malzeme_ID" />
+          <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Kullanicis">
-      <EntityTypeMapping TypeName="ProjeStajModel.Kullanici">
+      <EntityTypeMapping TypeName="stajModel.Kullanici">
         <MappingFragment StoreEntitySet="Kullanici">
-          <ScalarProperty Name="U_ID" ColumnName="U_ID" />
+          <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
           <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
           <ScalarProperty Name="Isim" ColumnName="Isim" />
           <ScalarProperty Name="Sifre" ColumnName="Sifre" />
@@ -83,22 +83,21 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Malzemelers">
-      <EntityTypeMapping TypeName="ProjeStajModel.Malzemeler">
+      <EntityTypeMapping TypeName="stajModel.Malzemeler">
         <MappingFragment StoreEntitySet="Malzemeler">
-          <ScalarProperty Name="M_ID" ColumnName="M_ID" />
-          <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+          <ScalarProperty Name="Malzeme_ID" ColumnName="Malzeme_ID" />
           <ScalarProperty Name="MalzemeKodu" ColumnName="MalzemeKodu" />
           <ScalarProperty Name="MalzemeAdi" ColumnName="MalzemeAdi" />
           <ScalarProperty Name="OzelKod" ColumnName="OzelKod" />
           <ScalarProperty Name="KDV" ColumnName="KDV" />
-          <ScalarProperty Name="B_ID" ColumnName="B_ID" />
           <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
-          <ScalarProperty Name="DüzenlemeTarihi" ColumnName="DüzenlemeTarihi" />
+          <ScalarProperty Name="DuzenlemeTarihi" ColumnName="DuzenlemeTarihi" />
+          <ScalarProperty Name="Birim_ID" ColumnName="Birim_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Yetkilendirmes">
-      <EntityTypeMapping TypeName="ProjeStajModel.Yetkilendirme">
+      <EntityTypeMapping TypeName="stajModel.Yetkilendirme">
         <MappingFragment StoreEntitySet="Yetkilendirme">
           <ScalarProperty Name="Yetki_ID" ColumnName="Yetki_ID" />
           <ScalarProperty Name="YetkiAdi" ColumnName="YetkiAdi" />

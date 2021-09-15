@@ -9,10 +9,10 @@ namespace site.Helpers
 {
     public class OrtakSinif
     {
-        data db = new data();
+        veri db = new veri();
         public static bool EditIzinYetkiVarmi(int id,Kullanici user)
         {
-            if (user.U_ID == id)
+            if (user.Kullanici_ID == id)
             {
                 return true;
             }
@@ -25,7 +25,7 @@ namespace site.Helpers
 
         public static bool DeleteIzinYetkiVarmi(int id, Kullanici user)
         {
-            if (user.U_ID == id)
+            if (user.Kullanici_ID == id)
             {
                 return true;
             }

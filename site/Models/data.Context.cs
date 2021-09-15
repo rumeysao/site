@@ -13,10 +13,10 @@ namespace site.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class data : DbContext
+    public partial class veri : DbContext
     {
-        public data()
-            : base("name=data")
+        public veri()
+            : base("name=veri")
         {
         }
     
@@ -26,7 +26,7 @@ namespace site.Models
         }
     
         public virtual DbSet<Birim> Birims { get; set; }
-        public virtual DbSet<Cariler> Carilers { get; set; }
+        public virtual DbSet<Cari> Caris { get; set; }
         public virtual DbSet<Fatura> Faturas { get; set; }
         public virtual DbSet<FaturaSatirlari> FaturaSatirlaris { get; set; }
         public virtual DbSet<Kullanici> Kullanicis { get; set; }

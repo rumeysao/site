@@ -14,24 +14,16 @@ namespace site.Models
     
     public partial class Malzemeler
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Malzemeler()
-        {
-            this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
-        }
-    
-        public int M_ID { get; set; }
-        public Nullable<bool> Aktif { get; set; }
+        public int Malzeme_ID { get; set; }
         public string MalzemeKodu { get; set; }
         public string MalzemeAdi { get; set; }
         public string OzelKod { get; set; }
         public Nullable<double> KDV { get; set; }
-        public Nullable<int> B_ID { get; set; }
         public Nullable<System.DateTime> OlusturmaTarihi { get; set; }
-        public Nullable<System.DateTime> DüzenlemeTarihi { get; set; }
+        public Nullable<System.DateTime> DuzenlemeTarihi { get; set; }
+        public Nullable<int> Birim_ID { get; set; }
     
         public virtual Birim Birim { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FaturaSatirlari> FaturaSatirlaris { get; set; }
+        public virtual FaturaSatirlari FaturaSatirlari { get; set; }
     }
 }

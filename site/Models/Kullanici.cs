@@ -17,20 +17,17 @@ namespace site.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kullanici()
         {
-            this.Carilers = new HashSet<Cariler>();
             this.Faturas = new HashSet<Fatura>();
             this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
         }
     
-        public int U_ID { get; set; }
+        public int Kullanici_ID { get; set; }
         public string KullaniciAdi { get; set; }
         public string Isim { get; set; }
         public string Sifre { get; set; }
         public string SoyIsim { get; set; }
         public Nullable<int> YetkiID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cariler> Carilers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fatura> Faturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

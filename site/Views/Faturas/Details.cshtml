@@ -1,0 +1,83 @@
+﻿@model site.Models.Fatura
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fatura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TRCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FisNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FisNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Saat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Saat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.İptal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.İptal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToplamKDV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToplamKDV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toplam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toplam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kullanici.KullaniciAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kullanici.KullaniciAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Fatura_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

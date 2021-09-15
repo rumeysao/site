@@ -1,0 +1,118 @@
+﻿@model IEnumerable<site.Models.Cari>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CariKodu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tanim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ulke)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sehir)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ilce)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostaKodu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aktif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kullanici_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fatura.Fatura_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FaturaSatirlari.Iptal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CariKodu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tanim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ulke)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sehir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ilce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostaKodu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aktif)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kullanici_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fatura.Fatura_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FaturaSatirlari.Iptal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Cari_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Cari_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Cari_ID })
+        </td>
+    </tr>
+}
+
+</table>

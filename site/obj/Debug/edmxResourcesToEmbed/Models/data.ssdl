@@ -1,24 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ProjeStajModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="stajModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Birim">
     <Key>
-      <PropertyRef Name="B_ID" />
+      <PropertyRef Name="Birim_ID" />
     </Key>
-    <Property Name="B_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Birim_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BirimKodu" Type="nchar" MaxLength="10" />
     <Property Name="BirimAdi" Type="nchar" MaxLength="10" />
   </EntityType>
-  <EntityType Name="Cariler">
+  <EntityType Name="Cari">
     <Key>
-      <PropertyRef Name="C_ID" />
+      <PropertyRef Name="Cari_ID" />
     </Key>
-    <Property Name="C_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Aktif" Type="int" />
+    <Property Name="Cari_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CariKodu" Type="nchar" MaxLength="10" />
-    <Property Name="FS_ID" Type="int" />
     <Property Name="Tanim" Type="nvarchar" MaxLength="50" />
-    <Property Name="F_ID" Type="int" />
-    <Property Name="U_ID" Type="int" />
     <Property Name="Adres" Type="nvarchar" MaxLength="50" />
     <Property Name="Ulke" Type="nchar" MaxLength="10" />
     <Property Name="Sehir" Type="nchar" MaxLength="10" />
@@ -28,26 +24,30 @@
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Web" Type="nvarchar" MaxLength="50" />
     <Property Name="PostaKodu" Type="int" />
+    <Property Name="Aktif" Type="bit" />
+    <Property Name="Fatura_ID" Type="int" />
+    <Property Name="FaturaSatirlari_ID" Type="int" />
+    <Property Name="Kullanici_ID" Type="int" />
   </EntityType>
   <EntityType Name="Fatura">
     <Key>
-      <PropertyRef Name="F_ID" />
+      <PropertyRef Name="Fatura_ID" />
     </Key>
-    <Property Name="F_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fatura_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TRCode" Type="int" />
-    <Property Name="FisNo" Type="nchar" MaxLength="10" />
+    <Property Name="FisNo" Type="int" />
     <Property Name="Tarih" Type="date" />
     <Property Name="Saat" Type="time" Precision="7" />
     <Property Name="İptal" Type="bit" />
     <Property Name="ToplamKDV" Type="float" />
-    <Property Name="U_ID" Type="int" />
     <Property Name="Toplam" Type="float" />
+    <Property Name="Kullanici_ID" Type="int" />
   </EntityType>
   <EntityType Name="FaturaSatirlari">
     <Key>
-      <PropertyRef Name="FS_ID" />
+      <PropertyRef Name="Faturasatirlari_ID" />
     </Key>
-    <Property Name="FS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Faturasatirlari_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TRCode" Type="int" />
     <Property Name="Tarih" Type="date" />
     <Property Name="FaturaReferansi" Type="int" />
@@ -55,81 +55,68 @@
     <Property Name="Toplam" Type="float" />
     <Property Name="Fiyat" Type="float" />
     <Property Name="BirimReferansi" Type="int" />
-    <Property Name="BirimSetReferans" Type="int" />
+    <Property Name="BİrimSetReferansi" Type="int" />
     <Property Name="KDV" Type="float" />
-    <Property Name="NetKDVMiktari" Type="float" />
+    <Property Name="NetKDV" Type="float" />
     <Property Name="KDVEsasTutari" Type="float" />
-    <Property Name="B_ID" Type="int" />
-    <Property Name="F_ID" Type="int" />
-    <Property Name="M_ID" Type="int" />
-    <Property Name="U_ID" Type="int" />
-    <Property Name="İptal" Type="bit" />
+    <Property Name="Iptal" Type="nchar" MaxLength="10" />
+    <Property Name="Birim_ID" Type="int" />
+    <Property Name="Fatura_ID" Type="int" />
+    <Property Name="Malzeme_ID" Type="int" />
+    <Property Name="Kullanici_ID" Type="int" />
   </EntityType>
   <EntityType Name="Kullanici">
     <Key>
-      <PropertyRef Name="U_ID" />
+      <PropertyRef Name="Kullanici_ID" />
     </Key>
-    <Property Name="U_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kullanici_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="KullaniciAdi" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="Isim" Type="nchar" MaxLength="10" />
-    <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="SoyIsim" Type="nchar" MaxLength="50" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SoyIsim" Type="nchar" MaxLength="10" />
     <Property Name="YetkiID" Type="int" />
   </EntityType>
   <EntityType Name="Malzemeler">
     <Key>
-      <PropertyRef Name="M_ID" />
+      <PropertyRef Name="Malzeme_ID" />
     </Key>
-    <Property Name="M_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Aktif" Type="bit" />
+    <Property Name="Malzeme_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MalzemeKodu" Type="nchar" MaxLength="10" />
     <Property Name="MalzemeAdi" Type="nchar" MaxLength="30" />
     <Property Name="OzelKod" Type="nchar" MaxLength="10" />
     <Property Name="KDV" Type="float" />
-    <Property Name="B_ID" Type="int" />
     <Property Name="OlusturmaTarihi" Type="date" />
-    <Property Name="DüzenlemeTarihi" Type="date" />
+    <Property Name="DuzenlemeTarihi" Type="date" />
+    <Property Name="Birim_ID" Type="int" />
   </EntityType>
   <EntityType Name="Yetkilendirme">
     <Key>
       <PropertyRef Name="Yetki_ID" />
     </Key>
-    <Property Name="Yetki_ID" Type="int" Nullable="false" />
+    <Property Name="Yetki_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="YetkiAdi" Type="nchar" MaxLength="10" />
   </EntityType>
-  <Association Name="FK_Cariler_Fatura">
+  <Association Name="FK_Cari_Fatura">
     <End Role="Fatura" Type="Self.Fatura" Multiplicity="0..1" />
-    <End Role="Cariler" Type="Self.Cariler" Multiplicity="*" />
+    <End Role="Cari" Type="Self.Cari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Fatura">
-        <PropertyRef Name="F_ID" />
+        <PropertyRef Name="Fatura_ID" />
       </Principal>
-      <Dependent Role="Cariler">
-        <PropertyRef Name="F_ID" />
+      <Dependent Role="Cari">
+        <PropertyRef Name="Fatura_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Cariler_FaturaSatirlari">
+  <Association Name="FK_Cari_FaturaSatirlari">
     <End Role="FaturaSatirlari" Type="Self.FaturaSatirlari" Multiplicity="0..1" />
-    <End Role="Cariler" Type="Self.Cariler" Multiplicity="*" />
+    <End Role="Cari" Type="Self.Cari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="FaturaSatirlari">
-        <PropertyRef Name="FS_ID" />
+        <PropertyRef Name="Faturasatirlari_ID" />
       </Principal>
-      <Dependent Role="Cariler">
-        <PropertyRef Name="FS_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Cariler_Kullanici">
-    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
-    <End Role="Cariler" Type="Self.Cariler" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Kullanici">
-        <PropertyRef Name="U_ID" />
-      </Principal>
-      <Dependent Role="Cariler">
-        <PropertyRef Name="U_ID" />
+      <Dependent Role="Cari">
+        <PropertyRef Name="FaturaSatirlari_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -138,10 +125,22 @@
     <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kullanici">
-        <PropertyRef Name="U_ID" />
+        <PropertyRef Name="Kullanici_ID" />
       </Principal>
       <Dependent Role="Fatura">
-        <PropertyRef Name="U_ID" />
+        <PropertyRef Name="Kullanici_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FaturaSatirlari_Birim">
+    <End Role="Birim" Type="Self.Birim" Multiplicity="0..1" />
+    <End Role="FaturaSatirlari" Type="Self.FaturaSatirlari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birim">
+        <PropertyRef Name="Birim_ID" />
+      </Principal>
+      <Dependent Role="FaturaSatirlari">
+        <PropertyRef Name="Birim_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -150,10 +149,10 @@
     <End Role="FaturaSatirlari" Type="Self.FaturaSatirlari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Fatura">
-        <PropertyRef Name="F_ID" />
+        <PropertyRef Name="Fatura_ID" />
       </Principal>
       <Dependent Role="FaturaSatirlari">
-        <PropertyRef Name="F_ID" />
+        <PropertyRef Name="Fatura_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -162,22 +161,10 @@
     <End Role="FaturaSatirlari" Type="Self.FaturaSatirlari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kullanici">
-        <PropertyRef Name="U_ID" />
+        <PropertyRef Name="Kullanici_ID" />
       </Principal>
       <Dependent Role="FaturaSatirlari">
-        <PropertyRef Name="U_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_FaturaSatirlari_Malzemeler">
-    <End Role="Malzemeler" Type="Self.Malzemeler" Multiplicity="0..1" />
-    <End Role="FaturaSatirlari" Type="Self.FaturaSatirlari" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Malzemeler">
-        <PropertyRef Name="M_ID" />
-      </Principal>
-      <Dependent Role="FaturaSatirlari">
-        <PropertyRef Name="M_ID" />
+        <PropertyRef Name="Kullanici_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -198,36 +185,48 @@
     <End Role="Malzemeler" Type="Self.Malzemeler" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Birim">
-        <PropertyRef Name="B_ID" />
+        <PropertyRef Name="Birim_ID" />
       </Principal>
       <Dependent Role="Malzemeler">
-        <PropertyRef Name="B_ID" />
+        <PropertyRef Name="Birim_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ProjeStajModelStoreContainer">
+  <Association Name="FK_Malzemeler_FaturaSatirlari">
+    <End Role="FaturaSatirlari" Type="Self.FaturaSatirlari" Multiplicity="1" />
+    <End Role="Malzemeler" Type="Self.Malzemeler" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="FaturaSatirlari">
+        <PropertyRef Name="Faturasatirlari_ID" />
+      </Principal>
+      <Dependent Role="Malzemeler">
+        <PropertyRef Name="Malzeme_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="stajModelStoreContainer">
     <EntitySet Name="Birim" EntityType="Self.Birim" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Cariler" EntityType="Self.Cariler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cari" EntityType="Self.Cari" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Fatura" EntityType="Self.Fatura" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FaturaSatirlari" EntityType="Self.FaturaSatirlari" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Malzemeler" EntityType="Self.Malzemeler" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Yetkilendirme" EntityType="Self.Yetkilendirme" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Cariler_Fatura" Association="Self.FK_Cariler_Fatura">
+    <AssociationSet Name="FK_Cari_Fatura" Association="Self.FK_Cari_Fatura">
       <End Role="Fatura" EntitySet="Fatura" />
-      <End Role="Cariler" EntitySet="Cariler" />
+      <End Role="Cari" EntitySet="Cari" />
     </AssociationSet>
-    <AssociationSet Name="FK_Cariler_FaturaSatirlari" Association="Self.FK_Cariler_FaturaSatirlari">
+    <AssociationSet Name="FK_Cari_FaturaSatirlari" Association="Self.FK_Cari_FaturaSatirlari">
       <End Role="FaturaSatirlari" EntitySet="FaturaSatirlari" />
-      <End Role="Cariler" EntitySet="Cariler" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cariler_Kullanici" Association="Self.FK_Cariler_Kullanici">
-      <End Role="Kullanici" EntitySet="Kullanici" />
-      <End Role="Cariler" EntitySet="Cariler" />
+      <End Role="Cari" EntitySet="Cari" />
     </AssociationSet>
     <AssociationSet Name="FK_Fatura_Kullanici" Association="Self.FK_Fatura_Kullanici">
       <End Role="Kullanici" EntitySet="Kullanici" />
       <End Role="Fatura" EntitySet="Fatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FaturaSatirlari_Birim" Association="Self.FK_FaturaSatirlari_Birim">
+      <End Role="Birim" EntitySet="Birim" />
+      <End Role="FaturaSatirlari" EntitySet="FaturaSatirlari" />
     </AssociationSet>
     <AssociationSet Name="FK_FaturaSatirlari_Fatura" Association="Self.FK_FaturaSatirlari_Fatura">
       <End Role="Fatura" EntitySet="Fatura" />
@@ -237,16 +236,16 @@
       <End Role="Kullanici" EntitySet="Kullanici" />
       <End Role="FaturaSatirlari" EntitySet="FaturaSatirlari" />
     </AssociationSet>
-    <AssociationSet Name="FK_FaturaSatirlari_Malzemeler" Association="Self.FK_FaturaSatirlari_Malzemeler">
-      <End Role="Malzemeler" EntitySet="Malzemeler" />
-      <End Role="FaturaSatirlari" EntitySet="FaturaSatirlari" />
-    </AssociationSet>
     <AssociationSet Name="FK_Kullanici_Yetkilendirme" Association="Self.FK_Kullanici_Yetkilendirme">
       <End Role="Yetkilendirme" EntitySet="Yetkilendirme" />
       <End Role="Kullanici" EntitySet="Kullanici" />
     </AssociationSet>
     <AssociationSet Name="FK_Malzemeler_Birim" Association="Self.FK_Malzemeler_Birim">
       <End Role="Birim" EntitySet="Birim" />
+      <End Role="Malzemeler" EntitySet="Malzemeler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Malzemeler_FaturaSatirlari" Association="Self.FK_Malzemeler_FaturaSatirlari">
+      <End Role="FaturaSatirlari" EntitySet="FaturaSatirlari" />
       <End Role="Malzemeler" EntitySet="Malzemeler" />
     </AssociationSet>
   </EntityContainer>
