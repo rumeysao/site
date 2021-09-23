@@ -4,73 +4,88 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Yeni Ekle", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MalzemeKodu)
+            Malzeme Kodu
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MalzemeAdi)
+            Malzeme Adı
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OzelKod)
+            Özel Kod
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.KDV)
+            Birim
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OlusturmaTarihi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DuzenlemeTarihi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Birim.BirimKodu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FaturaSatirlari.Iptal)
-        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MalzemeKodu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MalzemeAdi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OzelKod)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KDV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OlusturmaTarihi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DuzenlemeTarihi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Birim.BirimKodu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FaturaSatirlari.Iptal)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Malzeme_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Malzeme_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Malzeme_ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MalzemeKodu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MalzemeAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OzelKod)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Birim.BirimKodu)
+            </td>
+
+
+            <td class="context-menu">
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.Malzeme_ID }) |
+                @Html.ActionLink("İncele", "Details", new { id = item.Malzeme_ID }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Malzeme_ID })
+            </td>
+
+        </tr>
+    }
 
 </table>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+    })
+
+    $(document).bind("contextmenu", function (e) {
+
+        $(".contextmenu").css({
+
+            top: e.pageY, // .pageY : Mouse'un tıklandığı Y koordinatı
+
+            left: e.pageX, // .pageX : Mouse'un tıklandığı X koordinatı
+
+            display: "block" // Menümüzü görünür hale getiriyoruz (isterseniz burada fadeIn, slideDown gibi olaylarda kullanabilirsiniz. Eğlenmek size kalmış :) )
+
+        })
+
+        return false; // Kullanılan browser'ın kendi menüsünü pasif duruma getiriyoruz. Yani false değeri döndürerek bu işlevi engelliyoruz.
+
+    });
+
+    $(document).click(function () {
+
+        $(".contextmenu").hide(); // Dökümanın herhangi bir yerine tıklandığında menü kaybolsun.
+
+    })
+
+</script>
+

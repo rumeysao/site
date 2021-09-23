@@ -17,7 +17,8 @@ namespace site.Controllers
         // GET: Birims
         public ActionResult Index()
         {
-            return View(db.Birims.ToList());
+            var birims = db.Birims.Include(b => b.Kullanici);
+            return View(birims.ToList());
         }
 
         // GET: Birims/Details/5
@@ -38,6 +39,7 @@ namespace site.Controllers
         // GET: Birims/Create
         public ActionResult Create()
         {
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace site.Controllers
         // daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Birim_ID,BirimKodu,BirimAdi")] Birim birim)
+        public ActionResult Create([Bind(Include = "Birim_ID,BirimKodu,Kullanici_ID,BirimAdi")] Birim birim)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace site.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", birim.Kullanici_ID);
             return View(birim);
         }
 
@@ -70,6 +73,7 @@ namespace site.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", birim.Kullanici_ID);
             return View(birim);
         }
 
@@ -78,7 +82,7 @@ namespace site.Controllers
         // daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Birim_ID,BirimKodu,BirimAdi")] Birim birim)
+        public ActionResult Edit([Bind(Include = "Birim_ID,BirimKodu,Kullanici_ID,BirimAdi")] Birim birim)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace site.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", birim.Kullanici_ID);
             return View(birim);
         }
 

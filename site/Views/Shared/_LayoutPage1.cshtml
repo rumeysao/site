@@ -1,11 +1,13 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
+
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
@@ -21,70 +23,46 @@
                 @if (Session["username"] == null)
                 {
 
-                    @Html.ActionLink("ESBİ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
-                }
-                else
-                {
-                    @Html.ActionLink("ESBİ", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
-
-                }
+        @Html.ActionLink("ESBİ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+    else
+    {
+        @Html.ActionLink("ESBİ", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })}
             </div>
             <div class="navbar-collapse collapse navbar-right">
                 @if (Session["username"] == null)
                 {
-                    @Html.ActionLink("Kayıt Ol", "Create", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("Giriş Yap", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
-                }
-                else
-                {
-                    @Html.ActionLink(Session["username"].ToString(), "Profil", "Kullanici", new { area = "" }, new { @class = "navbar-brand" })
-
-                    @Html.ActionLink("Çıkış Yap", "Logout", "Kullanici", new { area = "" }, new { @class = "navbar-brand" })
-
-                }
-
+        @Html.ActionLink("Kayıt Ol", "Create", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Giriş Yap", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+                    else
+                    {
+        @Html.ActionLink(Session["username"].ToString(), "Profil", "Kullanici", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Çıkış Yap", "Logout", "Kullanici", new { area = "" }, new { @class = "navbar-brand" })}
+               
             </div>
             <center>
-                <button class="button" loadXMLDoc()">  @Html.ActionLink("CARİ", "Index","Caris", new { area = "" }, new { @class = "navbar-brand" })</button>
-                <button class="button" onclick="loadXMLDoc()">@Html.ActionLink("FATURALAR","Index","Faturas", new { area = "" }, new { @class = "navbar-brand" })</button>
-                <button class="button" onclick="loadXMLDoc()"> @Html.ActionLink("MALZEMELER","Index", "Malzemelers", new { area = "" }, new { @class = "navbar-brand" })</button>
-                <button class="button" onclick="loadXMLDoc()"> @Html.ActionLink("BİRİMLER", "Index","Birims", new { area = "" }, new { @class = "navbar-brand" })</button>
-            </center>
-            <script>
-
-
-                function loadXMLDoc() {
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById("demo").innerHTML =
-                                this.responseText;
-                        }
-                    };
-                    xhttp.open("GET", "xmlhttp_info.txt", true);
-                    xhttp.send();
-                }
-            </script>
+                <button class="w3-bar-item w3-button w3-black">@Html.ActionLink("MALZEMELER", "Index", "Malzemelers")</button>
+                <button class="w3-bar-item w3-button w3-black">@Html.ActionLink("FATURALAR", "Index", "Faturas")</button>
+                <button class="w3-bar-item w3-button w3-black">@Html.ActionLink("BİRİMLER", "Index", "Birims")</button>
+                <button class="w3-bar-item w3-button w3-black">@Html.ActionLink("CARİLER", "Index", "Caris")</button>
+                 </center>
         </div>
 
     </div>
 
 
-    
-            <div class="container body-content">
-                @RenderBody()
-                <hr />
-                <footer>
-                    <p>&copy; @DateTime.Now.Year - Benim Projem</p>
-                </footer>
-            </div>
 
-            <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-            <script src="~/Scripts/bootstrap.min.js"></script>
 
-            @RenderSection("scripts", required: false)
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Benim Projem</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

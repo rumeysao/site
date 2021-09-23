@@ -14,6 +14,12 @@ namespace site.Models
     
     public partial class Cari
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cari()
+        {
+            this.Faturas = new HashSet<Fatura>();
+        }
+    
         public int Cari_ID { get; set; }
         public string CariKodu { get; set; }
         public string Tanim { get; set; }
@@ -27,11 +33,12 @@ namespace site.Models
         public string Web { get; set; }
         public Nullable<int> PostaKodu { get; set; }
         public Nullable<bool> Aktif { get; set; }
-        public Nullable<int> Fatura_ID { get; set; }
         public Nullable<int> FaturaSatirlari_ID { get; set; }
         public Nullable<int> Kullanici_ID { get; set; }
     
-        public virtual Fatura Fatura { get; set; }
         public virtual FaturaSatirlari FaturaSatirlari { get; set; }
+        public virtual Kullanici Kullanici { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Fatura> Faturas { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace site.Controllers
         // GET: Malzemelers
         public ActionResult Index()
         {
-            var malzemelers = db.Malzemelers.Include(m => m.Birim).Include(m => m.FaturaSatirlari);
+            var malzemelers = db.Malzemelers.Include(m => m.Birim).Include(m => m.Kullanici);
             return View(malzemelers.ToList());
         }
 
@@ -40,7 +40,7 @@ namespace site.Controllers
         public ActionResult Create()
         {
             ViewBag.Birim_ID = new SelectList(db.Birims, "Birim_ID", "BirimKodu");
-            ViewBag.Malzeme_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Iptal");
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace site.Controllers
         // daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Malzeme_ID,MalzemeKodu,MalzemeAdi,OzelKod,KDV,OlusturmaTarihi,DuzenlemeTarihi,Birim_ID")] Malzemeler malzemeler)
+        public ActionResult Create([Bind(Include = "Malzeme_ID,MalzemeKodu,MalzemeAdi,OzelKod,KDV,OlusturmaTarihi,DuzenlemeTarihi,Kullanici_ID,Birim_ID")] Malzemeler malzemeler)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace site.Controllers
             }
 
             ViewBag.Birim_ID = new SelectList(db.Birims, "Birim_ID", "BirimKodu", malzemeler.Birim_ID);
-            ViewBag.Malzeme_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Iptal", malzemeler.Malzeme_ID);
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", malzemeler.Kullanici_ID);
             return View(malzemeler);
         }
 
@@ -76,7 +76,7 @@ namespace site.Controllers
                 return HttpNotFound();
             }
             ViewBag.Birim_ID = new SelectList(db.Birims, "Birim_ID", "BirimKodu", malzemeler.Birim_ID);
-            ViewBag.Malzeme_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Iptal", malzemeler.Malzeme_ID);
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", malzemeler.Kullanici_ID);
             return View(malzemeler);
         }
 
@@ -85,7 +85,7 @@ namespace site.Controllers
         // daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Malzeme_ID,MalzemeKodu,MalzemeAdi,OzelKod,KDV,OlusturmaTarihi,DuzenlemeTarihi,Birim_ID")] Malzemeler malzemeler)
+        public ActionResult Edit([Bind(Include = "Malzeme_ID,MalzemeKodu,MalzemeAdi,OzelKod,KDV,OlusturmaTarihi,DuzenlemeTarihi,Kullanici_ID,Birim_ID")] Malzemeler malzemeler)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace site.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Birim_ID = new SelectList(db.Birims, "Birim_ID", "BirimKodu", malzemeler.Birim_ID);
-            ViewBag.Malzeme_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Iptal", malzemeler.Malzeme_ID);
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", malzemeler.Kullanici_ID);
             return View(malzemeler);
         }
 

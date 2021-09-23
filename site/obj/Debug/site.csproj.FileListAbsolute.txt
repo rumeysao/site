@@ -162,3 +162,10 @@ C:\Users\Jimmy\Desktop\site\site\obj\Debug\site.csproj.CoreCompileInputs.cache
 C:\Users\Jimmy\Desktop\site\site\obj\Debug\site.csproj.CopyComplete
 C:\Users\Jimmy\Desktop\site\site\obj\Debug\site.dll
 C:\Users\Jimmy\Desktop\site\site\obj\Debug\site.pdb
+C:\Users\Jimmy\Desktop\site\site\bin\Antlr3.Runtime.dll
+C:\Users\Jimmy\Desktop\site\site\bin\Newtonsoft.Json.dll
+C:\Users\Jimmy\Desktop\site\site\bin\System.Web.Optimization.dll
+C:\Users\Jimmy\Desktop\site\site\bin\WebGrease.dll
+C:\Users\Jimmy\Desktop\site\site\bin\Antlr3.Runtime.pdb
+C:\Users\Jimmy\Desktop\site\site\bin\Newtonsoft.Json.xml
+C:\Users\Jimmy\Desktop\site\site\bin\System.Web.Optimization.xml

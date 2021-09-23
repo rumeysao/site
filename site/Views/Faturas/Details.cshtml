@@ -5,30 +5,31 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Details</h2>
 
 <div>
     <h4>Fatura</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TRCode)
+            Fatura Seri No
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TRCode)
+            @Html.DisplayFor(model => model.FaturaSeriNo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FisNo)
+            Fatura Sıra No
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FisNo)
+            @Html.DisplayFor(model => model.FaturaSiraNo)
         </dd>
 
+
+
         <dt>
-            @Html.DisplayNameFor(model => model.Tarih)
+            Tarih
         </dt>
 
         <dd>
@@ -36,48 +37,48 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Saat)
+            Tutar
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Saat)
+            @Html.DisplayFor(model => model.Tutar)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.İptal)
+            Miktar
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.İptal)
+            @Html.DisplayFor(model => model.FaturaSatirlari.Miktar)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ToplamKDV)
+            Fiyat
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ToplamKDV)
+            @Html.DisplayFor(model => model.FaturaSatirlari.Fiyat)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Toplam)
+            KDV
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Toplam)
+            @Html.DisplayFor(model => model.FaturaSatirlari.KDV)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.KullaniciAdi)
+            Birim
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kullanici.KullaniciAdi)
+            @Html.DisplayFor(model => model.Birim.BirimAdi)
         </dd>
+
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Fatura_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Güncelle", "Edit", new { id = Model.Fatura_ID }) |
+    @Html.ActionLink("Geri Dön", "Index")
 </p>

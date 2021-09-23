@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Edit</h2>
+
 
 
 @using (Html.BeginForm())
@@ -19,15 +19,17 @@
         @Html.HiddenFor(model => model.Birim_ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BirimKodu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class = "control-label col-md-2"><b>Birim Kodu</b></div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BirimKodu, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BirimKodu, "", new { @class = "text-danger" })
             </div>
         </div>
 
+  
+
         <div class="form-group">
-            @Html.LabelFor(model => model.BirimAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2"><b>Birim Adı</b></div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BirimAdi, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BirimAdi, "", new { @class = "text-danger" })
@@ -36,14 +38,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Kaydet" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Geri Dön", "Index")
 </div>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>

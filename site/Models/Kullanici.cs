@@ -17,8 +17,11 @@ namespace site.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kullanici()
         {
+            this.Birims = new HashSet<Birim>();
+            this.Caris = new HashSet<Cari>();
             this.Faturas = new HashSet<Fatura>();
             this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
+            this.Malzemelers = new HashSet<Malzemeler>();
         }
     
         public int Kullanici_ID { get; set; }
@@ -29,9 +32,15 @@ namespace site.Models
         public Nullable<int> YetkiID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Birim> Birims { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cari> Caris { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fatura> Faturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FaturaSatirlari> FaturaSatirlaris { get; set; }
         public virtual Yetkilendirme Yetkilendirme { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Malzemeler> Malzemelers { get; set; }
     }
 }

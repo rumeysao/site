@@ -14,27 +14,20 @@ namespace site.Models
     
     public partial class Fatura
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Fatura()
-        {
-            this.Caris = new HashSet<Cari>();
-            this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
-        }
-    
         public int Fatura_ID { get; set; }
-        public Nullable<int> TRCode { get; set; }
-        public Nullable<int> FisNo { get; set; }
+        public string FaturaSeriNo { get; set; }
+        public string FaturaSiraNo { get; set; }
+        public string Saat { get; set; }
         public Nullable<System.DateTime> Tarih { get; set; }
-        public Nullable<System.TimeSpan> Saat { get; set; }
-        public Nullable<bool> İptal { get; set; }
-        public Nullable<double> ToplamKDV { get; set; }
-        public Nullable<double> Toplam { get; set; }
+        public Nullable<decimal> Tutar { get; set; }
+        public Nullable<int> Cari_ID { get; set; }
         public Nullable<int> Kullanici_ID { get; set; }
+        public Nullable<int> FaturaSatirlari_ID { get; set; }
+        public Nullable<int> Birim_ID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cari> Caris { get; set; }
+        public virtual Birim Birim { get; set; }
+        public virtual Cari Cari { get; set; }
+        public virtual FaturaSatirlari FaturaSatirlari { get; set; }
         public virtual Kullanici Kullanici { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FaturaSatirlari> FaturaSatirlaris { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace site.Controllers
         // GET: Caris
         public ActionResult Index()
         {
-            var caris = db.Caris.Include(c => c.Fatura).Include(c => c.FaturaSatirlari);
+            var caris = db.Caris.Include(c => c.Faturas).Include(c => c.FaturaSatirlari).Include(c => c.Kullanici);
             return View(caris.ToList());
         }
 
@@ -41,6 +41,7 @@ namespace site.Controllers
         {
             ViewBag.Fatura_ID = new SelectList(db.Faturas, "Fatura_ID", "Fatura_ID");
             ViewBag.FaturaSatirlari_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Iptal");
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi");
             return View();
         }
 
@@ -58,8 +59,8 @@ namespace site.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Fatura_ID = new SelectList(db.Faturas, "Fatura_ID", "Fatura_ID", cari.Fatura_ID);
             ViewBag.FaturaSatirlari_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Iptal", cari.FaturaSatirlari_ID);
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", cari.Kullanici_ID);
             return View(cari);
         }
 
@@ -75,8 +76,8 @@ namespace site.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Fatura_ID = new SelectList(db.Faturas, "Fatura_ID", "Fatura_ID", cari.Fatura_ID);
             ViewBag.FaturaSatirlari_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Iptal", cari.FaturaSatirlari_ID);
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", cari.Kullanici_ID);
             return View(cari);
         }
 
@@ -93,8 +94,8 @@ namespace site.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Fatura_ID = new SelectList(db.Faturas, "Fatura_ID", "Fatura_ID", cari.Fatura_ID);
             ViewBag.FaturaSatirlari_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Iptal", cari.FaturaSatirlari_ID);
+            ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", cari.Kullanici_ID);
             return View(cari);
         }
 

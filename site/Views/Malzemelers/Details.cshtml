@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Details</h2>
+
 
 <div>
     <h4>Malzemeler</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.MalzemeKodu)
+            Malzeme Kodu
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MalzemeAdi)
+            Malzeme Adı
         </dt>
 
         <dd>
@@ -28,56 +28,26 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OzelKod)
+            Özel Kod
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.OzelKod)
         </dd>
 
+     
         <dt>
-            @Html.DisplayNameFor(model => model.KDV)
+            Birim Adı
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.KDV)
+            @Html.DisplayFor(model => model.Birim.BirimAdi)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OlusturmaTarihi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OlusturmaTarihi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DuzenlemeTarihi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DuzenlemeTarihi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Birim.BirimKodu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Birim.BirimKodu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FaturaSatirlari.Iptal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FaturaSatirlari.Iptal)
-        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Malzeme_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Güncelle", "Edit", new { id = Model.Malzeme_ID }) |
+    @Html.ActionLink("Geri Dön", "Index")
 </p>

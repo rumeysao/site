@@ -1,0 +1,46 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font: 9pt arial,helvetica,sans-serif;
+}
+
+.contextmenu,
+.contextmenu li ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: none;
+    min-width: 200px;
+    z-index: 999999999999999999;
+}
+
+    .contextmenu li {
+        position: relative;
+    }
+
+        .contextmenu li a,
+        .contextmenu li ul li a {
+            display: block;
+            color: #666;
+            text-decoration: none;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+            .contextmenu li a:hover {
+                color: #333;
+                background: #ddd;
+                border-bottom: 1px solid #ccc;
+            }
+
+        .contextmenu li:hover ul {
+            display: block;
+            min-width: 200px;
+        }

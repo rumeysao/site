@@ -18,30 +18,24 @@ namespace site.Models
         public FaturaSatirlari()
         {
             this.Caris = new HashSet<Cari>();
+            this.Faturas = new HashSet<Fatura>();
         }
     
         public int Faturasatirlari_ID { get; set; }
-        public Nullable<int> TRCode { get; set; }
-        public Nullable<System.DateTime> Tarih { get; set; }
-        public Nullable<int> FaturaReferansi { get; set; }
-        public Nullable<int> FaturaSatirNumarasi { get; set; }
-        public Nullable<double> Toplam { get; set; }
+        public Nullable<double> Tutar { get; set; }
         public Nullable<double> Fiyat { get; set; }
-        public Nullable<int> BirimReferansi { get; set; }
-        public Nullable<int> BİrimSetReferansi { get; set; }
         public Nullable<double> KDV { get; set; }
-        public Nullable<double> NetKDV { get; set; }
-        public Nullable<double> KDVEsasTutari { get; set; }
-        public string Iptal { get; set; }
+        public Nullable<int> Miktar { get; set; }
         public Nullable<int> Birim_ID { get; set; }
-        public Nullable<int> Fatura_ID { get; set; }
         public Nullable<int> Malzeme_ID { get; set; }
         public Nullable<int> Kullanici_ID { get; set; }
+        public string Aciklama { get; set; }
     
         public virtual Birim Birim { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cari> Caris { get; set; }
-        public virtual Fatura Fatura { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Fatura> Faturas { get; set; }
         public virtual Kullanici Kullanici { get; set; }
         public virtual Malzemeler Malzemeler { get; set; }
     }

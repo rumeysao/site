@@ -1,5 +1,4 @@
 ﻿@model site.Models.Kullanici
-<a href="~/Site1.Master">~/Site1.Master</a>
 @{
     ViewBag.Title = "Profil";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,7 +13,7 @@
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.Isim)
+            İsim
         </dt>
 
         <dd>
@@ -22,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SoyIsim)
+            Soyİsim
         </dt>
 
         <dd>
@@ -31,7 +30,7 @@
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sifre)
+            Şifre
         </dt>
 
         <dd>
@@ -41,6 +40,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Güncelle", "Edit", new { id = Model.U_ID }) |
-    @Html.ActionLink("Back to List", "Index","Home")
+    @Html.ActionLink("Güncelle", "Edit", new { id = Model.Kullanici_ID }) |
+    @Html.ActionLink("Geri Dön", "Index","Home")
 </p>

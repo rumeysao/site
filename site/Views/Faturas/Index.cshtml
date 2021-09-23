@@ -5,72 +5,56 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Yeni Ekle", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TRCode)
+            Fatura Seri No
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FisNo)
+            Fatura Sıra No
+        </th>
+      
+        <th>
+            Tarih
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tarih)
+            Müşteri Ünvanı
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Saat)
+            Tutar
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.İptal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ToplamKDV)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Toplam)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kullanici.KullaniciAdi)
-        </th>
+       
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TRCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FisNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tarih)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Saat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.İptal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ToplamKDV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Toplam)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kullanici.KullaniciAdi)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Fatura_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Fatura_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Fatura_ID })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FaturaSeriNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FaturaSiraNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tarih)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cari.Tanim)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tutar)
+    </td>
+
+    <td>
+        @Html.ActionLink("Güncelle", "Edit", new { id = item.Fatura_ID }) |
+        @Html.ActionLink("İncele", "Details", new { id = item.Fatura_ID }) |
+        @Html.ActionLink("Sil", "Delete", new { id = item.Fatura_ID })
+    </td>
+</tr>
 }
 
 </table>

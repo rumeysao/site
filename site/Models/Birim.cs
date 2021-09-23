@@ -17,14 +17,19 @@ namespace site.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Birim()
         {
+            this.Faturas = new HashSet<Fatura>();
             this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
             this.Malzemelers = new HashSet<Malzemeler>();
         }
     
         public int Birim_ID { get; set; }
         public string BirimKodu { get; set; }
+        public Nullable<int> Kullanici_ID { get; set; }
         public string BirimAdi { get; set; }
     
+        public virtual Kullanici Kullanici { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Fatura> Faturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FaturaSatirlari> FaturaSatirlaris { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
