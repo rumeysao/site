@@ -3,20 +3,22 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
-    
+
 
 
 }
 <head>
-<link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
-    </head>
+
+    <link href="~/Content/StyleSheet3.css" rel="stylesheet" />
+</head>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,300" rel="stylesheet">
 
 <p>
     @Html.ActionLink("Yeni Ekle", "Create")
 </p>
 
-<div style="overflow-x:auto;">
-    <table>
+
+    <table id="personel">
         <tr>
             <th>
                 Cari Kodu
@@ -54,14 +56,13 @@
                 </td>
 
                 <td>
-                  
-                        @Html.ActionLink("Güncelle", "Edit", new { id = item.Cari_ID })
-                        @Html.ActionLink("İncele", "Details", new { id = item.Cari_ID })
-                        @Html.ActionLink("Sil", "Delete", new { id = item.Cari_ID })
-                 
+
+                    @Html.ActionLink("Güncelle", "Edit", new { id = item.Cari_ID })
+                    @Html.ActionLink("İncele", "Details", new { id = item.Cari_ID })
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Cari_ID })
+
                 </td>
             </tr>
         }
     </table>
-</div>
 

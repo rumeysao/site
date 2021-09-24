@@ -11,6 +11,7 @@ namespace site.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Cari
     {
@@ -19,21 +20,54 @@ namespace site.Models
         {
             this.Faturas = new HashSet<Fatura>();
         }
-    
+        [Display(Name ="Cari Ýd")]
         public int Cari_ID { get; set; }
+        [Display(Name = "Cari Kodu")]
+
         public string CariKodu { get; set; }
+        [Display(Name = "Taným")]
+
         public string Tanim { get; set; }
+       
+
         public string Adres { get; set; }
+        [Display(Name = "Ülke")]
+
+
         public string Ulke { get; set; }
+        [Display(Name = "Þehir")]
+
         public string Sehir { get; set; }
+        [Display(Name = "Ýlçe")]
+
         public string Ilce { get; set; }
+        [Display(Name = "Telefon Numarasý")]
+
+        [Required(ErrorMessage ="Lütfen bu alaný boþ geçmeyiniz.")]
+       [DataType(DataType.PhoneNumber,ErrorMessage ="Lütfen geçerli formatta bilgi giriniz.")]
         public Nullable<int> Tel { get; set; }
+        [Display(Name = "Fax numarasý")]
+
         public Nullable<int> Fax { get; set; }
+        [Display(Name = "E-mail")]
+
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Display(Name = "Web Adresi")]
+
         public string Web { get; set; }
+        [Display(Name = "Posta Kodu")]
+
+        [DataType(DataType.PostalCode)]
         public Nullable<int> PostaKodu { get; set; }
+        
+
         public Nullable<bool> Aktif { get; set; }
+        [Display(Name = "Datura Satýrlarý Ýd")]
+
         public Nullable<int> FaturaSatirlari_ID { get; set; }
+        [Display(Name = "Kullanýcý Ýd")]
+
         public Nullable<int> Kullanici_ID { get; set; }
     
         public virtual FaturaSatirlari FaturaSatirlari { get; set; }

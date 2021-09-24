@@ -169,6 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BirimsController.cs" />
     <Compile Include="Controllers\CarisController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\FaturasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
@@ -267,6 +268,7 @@
     <Content Include="Views\Faturas\Details.cshtml" />
     <Content Include="Views\Faturas\Edit.cshtml" />
     <Content Include="Views\Faturas\Index.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

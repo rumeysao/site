@@ -5,11 +5,15 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
+<link href="~/Content/StyleSheet3.css" rel="stylesheet" />
 
 <p>
-    @Html.ActionLink("Yeni Ekle", "Create")
+    @Html.ActionLink("Ekle", "Create")
 </p>
-<table class="table">
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,300" rel="stylesheet">
+
+<table id="personel">
     <tr>
         <th>
             Fatura Seri No
@@ -17,7 +21,7 @@
         <th>
             Fatura Sıra No
         </th>
-      
+
         <th>
             Tarih
         </th>
@@ -27,34 +31,35 @@
         <th>
             Tutar
         </th>
-       
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.FaturaSeriNo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FaturaSiraNo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Tarih)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Cari.Tanim)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Tutar)
-    </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FaturaSeriNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FaturaSiraNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cari.Tanim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tutar)
+            </td>
 
-    <td>
-        @Html.ActionLink("Güncelle", "Edit", new { id = item.Fatura_ID }) |
-        @Html.ActionLink("İncele", "Details", new { id = item.Fatura_ID }) |
-        @Html.ActionLink("Sil", "Delete", new { id = item.Fatura_ID })
-    </td>
-</tr>
-}
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.Fatura_ID }) |
+                @Html.ActionLink("İncele", "Details", new { id = item.Fatura_ID }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Fatura_ID })
+            </td>
+        </tr>
+    }
 
 </table>

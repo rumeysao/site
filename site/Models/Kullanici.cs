@@ -11,6 +11,7 @@ namespace site.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Kullanici
     {
@@ -23,11 +24,23 @@ namespace site.Models
             this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
             this.Malzemelers = new HashSet<Malzemeler>();
         }
-    
+        [Display(Name = "Kullanýcý Ýd")]
+
         public int Kullanici_ID { get; set; }
+        [Required(ErrorMessage = "Bu alan boþ býrakýlamaz")]
+        [Display(Name = "Kullanýcý Adý")]
+
         public string KullaniciAdi { get; set; }
+        [Display(Name = "Ýsim")]
+
         public string Isim { get; set; }
+        [Required(ErrorMessage ="Bu alan boþ býrakýlamaz")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Þifre")]
+
         public string Sifre { get; set; }
+        [Display(Name = "Soy Ýsim")]
+
         public string SoyIsim { get; set; }
         public Nullable<int> YetkiID { get; set; }
     

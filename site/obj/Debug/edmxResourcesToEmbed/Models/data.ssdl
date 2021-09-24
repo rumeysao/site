@@ -126,6 +126,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Fatura_Birim">
+    <End Role="Birim" Type="Self.Birim" Multiplicity="0..1" />
+    <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birim">
+        <PropertyRef Name="Birim_ID" />
+      </Principal>
+      <Dependent Role="Fatura">
+        <PropertyRef Name="Birim_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fatura_Cari1">
+    <End Role="Cari" Type="Self.Cari" Multiplicity="0..1" />
+    <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cari">
+        <PropertyRef Name="Cari_ID" />
+      </Principal>
+      <Dependent Role="Fatura">
+        <PropertyRef Name="Cari_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fatura_FaturaSatirlari">
+    <End Role="FaturaSatirlari" Type="Self.FaturaSatirlari" Multiplicity="0..1" />
+    <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FaturaSatirlari">
+        <PropertyRef Name="Faturasatirlari_ID" />
+      </Principal>
+      <Dependent Role="Fatura">
+        <PropertyRef Name="FaturaSatirlari_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fatura_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+    <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Kullanici_ID" />
+      </Principal>
+      <Dependent Role="Fatura">
+        <PropertyRef Name="Kullanici_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_FaturaSatirlari_Birim">
     <End Role="Birim" Type="Self.Birim" Multiplicity="0..1" />
     <End Role="FaturaSatirlari" Type="Self.FaturaSatirlari" Multiplicity="*" />
@@ -217,6 +265,22 @@
     <AssociationSet Name="FK_Cari_Kullanici" Association="Self.FK_Cari_Kullanici">
       <End Role="Kullanici" EntitySet="Kullanici" />
       <End Role="Cari" EntitySet="Cari" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fatura_Birim" Association="Self.FK_Fatura_Birim">
+      <End Role="Birim" EntitySet="Birim" />
+      <End Role="Fatura" EntitySet="Fatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fatura_Cari1" Association="Self.FK_Fatura_Cari1">
+      <End Role="Cari" EntitySet="Cari" />
+      <End Role="Fatura" EntitySet="Fatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fatura_FaturaSatirlari" Association="Self.FK_Fatura_FaturaSatirlari">
+      <End Role="FaturaSatirlari" EntitySet="FaturaSatirlari" />
+      <End Role="Fatura" EntitySet="Fatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fatura_Kullanici" Association="Self.FK_Fatura_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Fatura" EntitySet="Fatura" />
     </AssociationSet>
     <AssociationSet Name="FK_FaturaSatirlari_Birim" Association="Self.FK_FaturaSatirlari_Birim">
       <End Role="Birim" EntitySet="Birim" />

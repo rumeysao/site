@@ -11,6 +11,7 @@ namespace site.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Malzemeler
     {
@@ -19,15 +20,32 @@ namespace site.Models
         {
             this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
         }
-    
+        [Display(Name = "Malzeme Ýd")]
+
         public int Malzeme_ID { get; set; }
+        [Display(Name = "Malzeme Ýd")]
+
         public string MalzemeKodu { get; set; }
+        [Display(Name = "Malzeme Kodu")]
+
         public string MalzemeAdi { get; set; }
+        [Display(Name = "Özel Kod")]
+
         public string OzelKod { get; set; }
         public Nullable<double> KDV { get; set; }
-        public Nullable<System.DateTime> OlusturmaTarihi { get; set; }
-        public Nullable<System.DateTime> DuzenlemeTarihi { get; set; }
+        [Display(Name = "Oluþturma Tarihi")]
+
+        public Nullable<System.DateTime> OlusturmaTarihi { get; set; } = DateTime.Now;
+
+
+        [Display(Name = "Düzenlenme Tarihi")]
+
+        public Nullable<System.DateTime> DuzenlemeTarihi { get; set; } = DateTime.UtcNow;
+        [Display(Name = "Kullanýcý Ýd")]
+
         public Nullable<int> Kullanici_ID { get; set; }
+        [Display(Name = "Birim Ýd")]
+
         public Nullable<int> Birim_ID { get; set; }
     
         public virtual Birim Birim { get; set; }

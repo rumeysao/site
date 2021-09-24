@@ -11,23 +11,46 @@ namespace site.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public partial class Fatura
     {
+        [Display(Name = "Fatura Ýd")]
         public int Fatura_ID { get; set; }
+        [Display(Name = "Fatura Seri No")]
+
         public string FaturaSeriNo { get; set; }
+        [Display(Name = "Fatura Sýra No")]
+
         public string FaturaSiraNo { get; set; }
+       
+
+        [DataType(DataType.Time)]
         public string Saat { get; set; }
-        public Nullable<System.DateTime> Tarih { get; set; }
+        
+
+        [DataType(DataType.DateTime)]
+        public Nullable<System.DateTime> Tarih { get; set; } = DateTime.Now;[Display(Name = "Cari Ýd")]
+
         public Nullable<decimal> Tutar { get; set; }
+        [Display(Name = "Cari Ýd")]
+
         public Nullable<int> Cari_ID { get; set; }
+        [Display(Name = "Kullanýcý Ýd")]
         public Nullable<int> Kullanici_ID { get; set; }
+        [Display(Name = "Fatura Satýrlarý Ýd")]
+
         public Nullable<int> FaturaSatirlari_ID { get; set; }
+        [Display(Name = "Birim Ýd")]
+
         public Nullable<int> Birim_ID { get; set; }
     
         public virtual Birim Birim { get; set; }
         public virtual Cari Cari { get; set; }
         public virtual FaturaSatirlari FaturaSatirlari { get; set; }
         public virtual Kullanici Kullanici { get; set; }
+        public IEnumerable<SelectListItem> ListOfFatura { get;  set; }
+        public IEnumerable<SelectListItem> ListOfCari { get;  set; }
     }
 }

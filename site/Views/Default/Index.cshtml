@@ -1,0 +1,140 @@
+﻿@model site.Models.Fatura
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnadd").click(function () {
+
+            add();
+        })
+            
+        
+    });
+    function add() {
+        var tablo = $("#tablofatura")
+        var Birim_ID = $("#txtbirimid").val();
+        var birim = $("txtbirimid option:selected").text();
+        var Fiyat = $("#txtfiyat").val();
+        var Miktar = $("#txtmiktar").val();
+        var KDV = $("#txtkdv").val();
+        var Tutar = (parseFloat(Fiyat) * parseInt(Miktar) * (parseFloat(KDV) / 100)) + (parseFloat(Fiyat) * parseInt(Miktar));
+
+        var rowValue = "<tr></td>"
+            + birim +
+            "</td><td>"
+            + Fiyat +
+            "</td><td>"
+            + Miktar +
+            "</td><td>" +
+            KDV +
+            "</td><td>" +
+            Tutar +
+            "</td><td>"
+            + "<input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='removeFatura(Birim_ID)'/></td></tr>";
+
+        $("#tablofatura").append(rowValue);
+    }
+</script>
+
+
+<h4>FATURA</h4>
+
+
+
+ 
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Yeni Fatura Ekle</button> 
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">FATURA</h4>
+
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="form-group">
+                        @Html.LabelFor(expression: model => model.FaturaSeriNo)
+                        @Html.TextBoxFor(expression: model => model.FaturaSeriNo, htmlAttributes: new { @class = "form-control", @id = "txtseri" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(expression: model => model.FaturaSiraNo)
+                        @Html.TextBoxFor(expression: model => model.FaturaSiraNo, htmlAttributes: new { @class = "form-control", @id = "txtsıra" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(expression: model => model.Cari_ID)
+                        @Html.TextBoxFor(expression: model => model.Cari_ID,htmlAttributes: new { @class = "form-control", @id = "txtcariid" })
+
+                    </div>
+                    <fieldset>
+                        <legend>Fatura İşlemleri</legend>
+                        <div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(expression: model => model.FaturaSatirlari.Miktar)
+                                @Html.TextBoxFor(expression: model => model.FaturaSatirlari.Miktar, htmlAttributes: new { @class = "form-control", @id = "txtmiktar", @style = "text-align:right" })
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(expression: model => model.FaturaSatirlari.Fiyat)
+                                @Html.TextBoxFor(expression: model => model.FaturaSatirlari.Fiyat, htmlAttributes: new { @class = "form-control", @id = "txtfiyat", @style = "text-align:right" })
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(expression: model => model.FaturaSatirlari.KDV)
+                                @Html.TextBoxFor(expression: model => model.FaturaSatirlari.KDV, htmlAttributes: new { @class = "form-control", @id = "txtkdv", @style = "text-align:right" })
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(expression: model => model.Birim.Birim_ID)
+                                @Html.TextBoxFor(expression: model => model.Birim.Birim_ID, htmlAttributes: new { @class = "form-control", @id = "txtbirimid", @style = "text-align:right" })
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(expression: model => model.Tutar)
+                                @Html.TextBoxFor(expression: model => model.Tutar, htmlAttributes: new { @class = "form-control", @id = "txttutar", @style = "text-align:right" })
+
+                            </div>
+                            <div class="form-group">
+                                <input id="btnadd" style="float:right" type="button" name="addtolist" value="Listeye Ekle" class="btn btn-danger" />
+                            </div>
+                        </div>
+                        <table class="table table-condensed" style="width:100%" id="tablofatura">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Fiyat
+                                    <th>
+                                        Miktar
+                                    </th>
+
+                                    <th>
+                                        KDV
+
+                                    <th>
+                                        Birim
+                                    </th>
+                                    <th>
+                                        Tutar
+                                    </th>
+                                    <th>
+                                        Toplam
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Kaydet</button>&nbsp;
+                <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -4,13 +4,15 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
-<h2>Index</h2>
+<link href="~/Content/StyleSheet3.css" rel="stylesheet" />
 
 <p>
-    @Html.ActionLink("Yeni Ekle", "Create")
+    @Html.ActionLink("Ekle", "Create")
 </p>
-<table class="table">
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,300" rel="stylesheet">
+
+<table id="personel">
     <tr>
         <th>
             Malzeme Kodu

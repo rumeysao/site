@@ -11,6 +11,7 @@ namespace site.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Birim
     {
@@ -21,10 +22,13 @@ namespace site.Models
             this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
             this.Malzemelers = new HashSet<Malzemeler>();
         }
-    
+         [Display(Name ="Birim Ýd")]
         public int Birim_ID { get; set; }
+        [Display(Name ="Birim Kodu")]
         public string BirimKodu { get; set; }
+        [Display(Name ="Kullanýcý Ýd")]
         public Nullable<int> Kullanici_ID { get; set; }
+        [Display(Name ="Birim Adý")]
         public string BirimAdi { get; set; }
     
         public virtual Kullanici Kullanici { get; set; }
