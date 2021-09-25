@@ -20,7 +20,7 @@
         var Fiyat = $("#txtfiyat").val();
         var Miktar = $("#txtmiktar").val();
         var KDV = $("#txtkdv").val();
-        var Tutar = (parseFloat(Fiyat) * parseInt(Miktar) * (parseFloat(KDV) / 100)) + (parseFloat(Fiyat) * parseInt(Miktar));
+        var Tutar = (parseFloat(Fiyat) * par(Miktar) * (parseFloat(KDV) / 100)) + (parseFloat(Fiyat) * parseInt(Miktar));
 
         var rowValue = "<tr></td>"
             + birim +
