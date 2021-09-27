@@ -18,11 +18,11 @@ namespace site.Models
     {
         [Display(Name = "Fatura Ýd")]
         public int Fatura_ID { get; set; }
+
         [Display(Name = "Fatura Seri No")]
-
         public string FaturaSeriNo { get; set; }
-        [Display(Name = "Fatura Sýra No")]
 
+        [Display(Name = "Fatura Sýra No")]
         public string FaturaSiraNo { get; set; }
        
 
@@ -34,23 +34,27 @@ namespace site.Models
         public Nullable<System.DateTime> Tarih { get; set; } = DateTime.Now;[Display(Name = "Cari Ýd")]
 
         public Nullable<decimal> Tutar { get; set; }
-        [Display(Name = "Cari Ýd")]
 
+        [Display(Name = "Cari")]
         public Nullable<int> Cari_ID { get; set; }
-        [Display(Name = "Kullanýcý Ýd")]
+
+        [Display(Name = "Kullanýcý")]
         public Nullable<int> Kullanici_ID { get; set; }
-        [Display(Name = "Fatura Satýrlarý Ýd")]
 
+        [Display(Name = "Fatura Satýrlarý")]
         public Nullable<int> FaturaSatirlari_ID { get; set; }
-        [Display(Name = "Birim Ýd")]
 
+        [Display(Name = "Birim")]
         public Nullable<int> Birim_ID { get; set; }
     
         public virtual Birim Birim { get; set; }
         public virtual Cari Cari { get; set; }
         public virtual FaturaSatirlari FaturaSatirlari { get; set; }
         public virtual Kullanici Kullanici { get; set; }
-        public IEnumerable<SelectListItem> ListOfFatura { get;  set; }
+        
         public IEnumerable<SelectListItem> ListOfCari { get;  set; }
+        public IEnumerable<SelectListItem> ListOfFaturaSatirlari { get;  set; }
+        public IEnumerable<SelectListItem> ListOfKullanici { get;  set; }
+        public IEnumerable<SelectListItem> ListOfBirim { get; set; }
     }
 }
