@@ -11,8 +11,31 @@
         });
     });
     function faturaekle() {
-        var 
+        var faturatablo = $("#tablofatura");
+        var birimid = $("#ddbirim").val();
+        var birim = $("#ddbirim option:selected").text();
+        var miktar = $("#txtmiktar").val();
+        var fiyat = $("#txtfiyat").val();
+        var kdv = $("#txtkdv").val();
+        var tutar = (parseFloat(fiyat) * parseInt(miktar) * (parseFloat(kdv) / 100)) + (parseFloat(fiyat) * parseInt(miktar));
+
+        var rowValue = "<tr></td>"
+            + fiyat +
+            "<td></td>"
+            + miktar +
+            "<td></td>"
+            + birim +
+            "<td></td>"
+            + kdv +
+            "<td></td>"
+            + tutar +
+            "<td></td>" +
+            "< input type = 'button' value = 'Remove' name = 'remove' onclick = 'removeFatura(birimid)' /></td></tr>"
+
+        $("#tablofatura").append(rowValue);
     }
+
+    
 </script>
 <h4>FATURA</h4>
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Yeni Fatura Ekle</button>
