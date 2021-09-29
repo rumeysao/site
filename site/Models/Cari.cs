@@ -74,5 +74,6 @@ namespace site.Models
         public virtual Kullanici Kullanici { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fatura> Faturas { get; set; }
+        public List<Cari> ListOfCari { get; set; }
     }
 }

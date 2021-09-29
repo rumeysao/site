@@ -48,5 +48,6 @@ namespace site.Models
         public virtual ICollection<Fatura> Faturas { get; set; }
         public virtual Kullanici Kullanici { get; set; }
         public virtual Malzemeler Malzemeler { get; set; }
+        
     }
 }

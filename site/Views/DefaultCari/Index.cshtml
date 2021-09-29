@@ -1,0 +1,133 @@
+﻿@model site.Models.Cari
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<script type="text/javascript">
+    function veritabaninaekle() {
+
+        var objcari = {};
+        var listofcari = [];
+
+        $.each(
+            function () {
+
+
+                var a = {};
+
+                a.= $(this).find("td:eq(0)").val();
+                a.Fiyat = $(this).find("td:eq(1)").val();
+                a.Miktar = $(this).find("td:eq(2)").val();;
+                a.KDV = $(this).find("td:eq(4)").val();
+                a.Tutar = $(this).find("td:eq(5)").val();
+                ListOfFaturaSatirlari.push(a);
+
+
+
+            });
+        objcari. = $("#txtseri").val();
+        objfatura.FaturaSiraNo = $("#txtsira").val();
+        objfatura.Cari_ID = $("#ddcari").val();
+        objfatura.Fiyat = $("#txtfiyat").val();
+        objfatura.Miktar = $("#txtmiktar").val();;
+        objfatura.KDV = $("#txtkdv").val();
+
+        objfatura.ListOfFaturaSatirlari = ListOfFaturaSatirlari;
+
+
+
+        $.ajax({
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(objcari),
+            url: '/DefaultCari/Index',
+            success: function (data) {
+
+            },
+            error: function () {
+                alert("HATA");
+            }
+        });
+    }
+
+
+
+</script>
+<h4>CARİ</h4>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Cari Ekle</button>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">CARİ</h4>
+
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model=>model.CariKodu)
+                            @Html.TextBoxFor(model => model.CariKodu, htmlAttributes: new { @class = "from-control", @id = "txtcarikodu" })
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.Tanim)
+                            @Html.TextBoxFor(model => model.Tanim, htmlAttributes: new { @class = "from-control", @id = "txtunvan" })
+                        </div>
+                       
+                        <fieldset>
+                            <legend>Fatura İşlemleri</legend>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.Adres)
+                                @Html.TextBoxFor(model => model.Adres, htmlAttributes: new { @class = "form-control", @id = "txtadres", style = "text-align:right" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.Ilce)
+                                @Html.TextBoxFor(model => model.Ilce, htmlAttributes: new { @class = "form-control", @id = "txtilce", style = "text-align:right" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.Sehir)
+                                @Html.TextBoxFor(model => model.Sehir, htmlAttributes: new { @class = "form-control", @id = "txtsehir" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.Tel)
+                                @Html.TextBoxFor(model => model.Tel, htmlAttributes: new { @class = "form-control", @id = "txttel" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.Fax)
+                                @Html.TextBoxFor(model => model.Fax, htmlAttributes: new { @class = "form-control", @id = "txtfax" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.Email)
+                                @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control", @id = "txtmail"})
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.Web)
+                                @Html.TextBoxFor(model => model.Web, htmlAttributes: new { @class = "form-control", @id = "txtweb" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.PostaKodu)
+                                @Html.TextBoxFor(model => model.PostaKodu, htmlAttributes: new { @class = "form-control", @id = "txtposta" })
+                            </div>
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Aktif)
+                                @Html.ValidationMessageFor(model => model.Aktif, "", new { @class = "text-danger" ,@id="cbaktif"})
+                            </div>
+
+                           
+                     
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="kaydet" onclick="veritabaninaekle()">Kaydet</button>&nbsp;
+                <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -53,8 +53,9 @@ namespace site.Models
         public virtual Kullanici Kullanici { get; set; }
         
         public IEnumerable<SelectListItem> ListOfCari { get;  set; }
-        public IEnumerable<SelectListItem> ListOfFaturaSatirlari { get;  set; }
+   
         public IEnumerable<SelectListItem> ListOfKullanici { get;  set; }
         public IEnumerable<SelectListItem> ListOfBirim { get; set; }
+        public List<FaturaSatirlari> ListOfFaturaSatirlari { get; set; }
     }
 }

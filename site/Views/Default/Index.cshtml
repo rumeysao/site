@@ -4,39 +4,81 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#addtolist").click(function () {
-            faturaekle();
-        });
-    });
-    function faturaekle() {
-        var faturatablo = $("#tablofatura");
-        var birimid = $("#ddbirim").val();
-        var birim = $("#ddbirim option:selected").text();
-        var miktar = $("#txtmiktar").val();
-        var fiyat = $("#txtfiyat").val();
-        var kdv = $("#txtkdv").val();
-        var tutar = (parseFloat(fiyat) * parseInt(miktar) * (parseFloat(kdv) / 100)) + (parseFloat(fiyat) * parseInt(miktar));
+@section scripts{
+    <script type="text/javascript">
 
-        var rowValue = "<tr></td>"
-            + fiyat +
-            "<td></td>"
-            + miktar +
-            "<td></td>"
-            + birim +
-            "<td></td>"
-            + kdv +
-            "<td></td>"
-            + tutar +
-            "<td></td>" +
-            "< input type = 'button' value = 'Remove' name = 'remove' onclick = 'removeFatura(birimid)' /></td></tr>"
+      
+        
+        function faturaekle() {
+            var fiyat = $("#txtfiyat").val();
+            var miktar = $("#txtmiktar").val();
+            var birimid = $("#ddbirim").val();
+            var birim = $("ddbirim option:selected").text();
 
-        $("#tablofatura").append(rowValue);
-    }
 
-    
-</script>
+            var kdv = $("#txtkdv").val();
+            var tutar = (parseFloat(fiyat) * parseInt(miktar) * (parseFloat(kdv) / 100)) + (parseFloat(fiyat) * parseInt(miktar));
+
+                var rowValue = "<tr><td>" + birimid+"</td><td>" + fiyat + "</td><td>" + miktar + "</td><td>" + birim + "</td><td>" +
+                kdv + "</td><td>" + tutar + "</td><td>" + "<input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='removefatura(birimid)' /></td></tr>";
+            $("#tablofatura").append(rowValue);
+
+        }
+
+        function veritabaninaekle() {
+
+            var objfatura = {};
+            var ListOfFaturaSatirlari = [];
+            
+         
+
+           
+            var tablo = $("#tablofatura").find("tr:gt(0)");
+            $.each(tablo,
+                function () {
+
+                 
+                    var  a = {};
+
+                    a.Birim_ID = $(this).find("td:eq(0)").val();
+                    a.Fiyat = $(this).find("td:eq(1)").val();
+                    a.Miktar =$(this).find("td:eq(2)").val();;
+                    a.KDV = $(this).find("td:eq(4)").val();
+                    a.Tutar = $(this).find("td:eq(5)").val();
+                    ListOfFaturaSatirlari.push(a);
+
+
+
+                });
+            objfatura.FaturaSeriNo = $("#txtseri").val();
+            objfatura.FaturaSiraNo = $("#txtsira").val();
+            objfatura.Cari_ID =  $("#ddcari").val(); 
+            objfatura.Fiyat =  $("#txtfiyat").val();
+            objfatura.Miktar = $("#txtmiktar").val();;
+            objfatura.KDV = $("#txtkdv").val();
+
+            objfatura.ListOfFaturaSatirlari = ListOfFaturaSatirlari;
+
+
+            $.ajax({
+                async: true,
+                type: 'POST',
+                dataType: 'JSON',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(objfatura),
+                url: '/Default/Index',
+                success: function (data) {
+
+                },
+                error: function () {
+                    alert("HATA");
+                }
+            });
+        }
+
+    </script>
+}
+
 <h4>FATURA</h4>
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Yeni Fatura Ekle</button>
 <div id="myModal" class="modal fade" role="dialog">
@@ -49,66 +91,74 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <div class="form-group col-md-6">
-                        @Html.LabelFor(model => model.FaturaSeriNo)
-                        @Html.TextBoxFor(model => model.FaturaSeriNo, htmlAttributes: new { @class = "from-control", @id = "txtseri" })
-                    </div>
-                    <div class="form-group col-md-6">
-                        @Html.LabelFor(model => model.FaturaSiraNo)
-                        @Html.TextBoxFor(model => model.FaturaSiraNo, htmlAttributes: new { @class = "from-control", @id = "txtsira" })
-                    </div>
-                    <div class="form-group col-md-6">
-                        @Html.LabelFor(model => model.Cari_ID)
-                        @Html.DropDownListFor(model => model.Cari_ID,Model.ListOfCari, htmlAttributes: new { @class = "from-control", @id = "ddcari" })
-                    </div>
-                    <fieldset>
-                        <legend>Fatura İşlemleri</legend>
-                        <div class="form-group col-md-4">
-                            @Html.LabelFor(model => model.FaturaSatirlari.Fiyat)
-                            @Html.TextBoxFor(model => model.FaturaSatirlari.Fiyat, htmlAttributes: new { @class = "form-control", @id = "txtfiyat", style = "text-align:right" })
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.FaturaSeriNo)
+                            @Html.TextBoxFor(model => model.FaturaSeriNo, htmlAttributes: new { @class = "from-control", @id = "txtseri" })
                         </div>
-                        <div class="form-group col-md-4">
-                            @Html.LabelFor(model => model.FaturaSatirlari.Miktar)
-                            @Html.TextBoxFor(model => model.FaturaSatirlari.Miktar, htmlAttributes: new { @class = "form-control", @id = "txtmiktar" , style = "text-align:right" })
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.FaturaSiraNo)
+                            @Html.TextBoxFor(model => model.FaturaSiraNo, htmlAttributes: new { @class = "from-control", @id = "txtsira" })
                         </div>
-                        <div class="form-group col-md-4">
-                            @Html.LabelFor(model => model.Birim_ID)
-                            @Html.DropDownListFor(model => model.Birim_ID, Model.ListOfBirim,htmlAttributes: new { @class = "form-control", @id = "ddbirim" })
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.Cari_ID)
+                            @Html.DropDownListFor(model => model.Cari_ID, Model.ListOfCari, htmlAttributes: new { @class = "from-control", @id = "ddcari" })
                         </div>
-                        <div class="form-group col-md-4">
-                            @Html.LabelFor(model => model.FaturaSatirlari.KDV)
-                            @Html.TextBoxFor(model => model.FaturaSatirlari.KDV, htmlAttributes: new { @class = "form-control", @id = "txtkdv",  style="text-align:right"})
-                        </div>
-                        <div class="form-group">
-                            <input id="addtolist" type="button" name="addtolist" value="Listeye Ekle" class="btn btn-danger"/>
+                        <fieldset>
+                            <legend>Fatura İşlemleri</legend>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.FaturaSatirlari.Fiyat)
+                                @Html.TextBoxFor(model => model.FaturaSatirlari.Fiyat, htmlAttributes: new { @class = "form-control", @id = "txtfiyat", style = "text-align:right" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.FaturaSatirlari.Miktar)
+                                @Html.TextBoxFor(model => model.FaturaSatirlari.Miktar, htmlAttributes: new { @class = "form-control", @id = "txtmiktar", style = "text-align:right" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.Birim_ID)
+                                @Html.DropDownListFor(model => model.Birim_ID, Model.ListOfBirim, htmlAttributes: new { @class = "form-control", @id = "ddbirim" })
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.LabelFor(model => model.FaturaSatirlari.KDV)
+                                @Html.TextBoxFor(model => model.FaturaSatirlari.KDV, htmlAttributes: new { @class = "form-control", @id = "txtkdv", style = "text-align:right" })
+                            </div>
 
-                        </div>
-                        <table class="table table-condensed" style="width:100%" id="tablofatura">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fiyat
-                                    </th>
-                                    <th>
-                                        Miktar
-                                    </th>
-                                    <th>
-                                        Birim
-                                    </th>
-                                    <th>
-                                        KDV
-                                    </th>
-                                    <th>
-                                        Tutar
-                                    </th>
-                                </tr>
-                             </thead>
-                        </table>
-                    </fieldset>
+                            <div class="form-group">
+                                <input id="btnaddtolist" type="button" name="addtolist" value="Listeye Ekle" class="btn btn-danger" onclick="faturaekle()" />
+
+                            </div>
+                            <table class="table table-condensed" style="width:100%" id="tablofatura">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                        <th>
+                                            Fiyat
+                                        </th>
+                                        <th>
+                                            Miktar
+                                        </th>
+                                        <th>
+                                            Birim
+                                        </th>
+                                        <th>
+                                            KDV
+                                        </th>
+                                        <th>
+                                            Tutar
+                                        </th>
+                                        <th>
+                                        Birim İD
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Kaydet</button>&nbsp;
+                <button type="button" class="btn btn-primary" id="kaydet" onclick="veritabaninaekle()">Kaydet</button>&nbsp;
                 <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
             </div>
         </div>
