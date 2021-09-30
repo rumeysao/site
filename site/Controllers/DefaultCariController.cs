@@ -8,10 +8,10 @@ namespace site.Controllers
 {
     public class DefaultCariController : Controller
     {
-        veri objveri;
+        veriEntities objveri;
         public DefaultCariController()
         {
-            objveri = new veri();
+            objveri = new veriEntities();
         }
         // GET: DefaultCari
         public ActionResult Index()

@@ -12,50 +12,38 @@ namespace site.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
 
+    
     public partial class Fatura
     {
-        [Display(Name = "Fatura Ýd")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Fatura()
+        {
+            this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
+        }
+        [Display(Name = "Fatura ÝD")]
         public int Fatura_ID { get; set; }
-
         [Display(Name = "Fatura Seri No")]
         public string FaturaSeriNo { get; set; }
-
-        [Display(Name = "Fatura Sýra No")]
+        [Display(Name = "Fatura Sýra NO")]
         public string FaturaSiraNo { get; set; }
        
-
-        [DataType(DataType.Time)]
         public string Saat { get; set; }
-        
 
-        [DataType(DataType.DateTime)]
-        public Nullable<System.DateTime> Tarih { get; set; } = DateTime.Now;[Display(Name = "Cari Ýd")]
-
-        public Nullable<decimal> Tutar { get; set; }
-
-        [Display(Name = "Cari")]
+        public Nullable<System.DateTime> Tarih { get; set; } = DateTime.Now;
+       
+        public Nullable<decimal> Toplam { get; set; }
+        [Display(Name = "Cari ÝD")]
         public Nullable<int> Cari_ID { get; set; }
-
-        [Display(Name = "Kullanýcý")]
+        [Display(Name = "Kullanýcý ÝD")]
         public Nullable<int> Kullanici_ID { get; set; }
-
-        [Display(Name = "Fatura Satýrlarý")]
-        public Nullable<int> FaturaSatirlari_ID { get; set; }
-
-        [Display(Name = "Birim")]
+        [Display(Name = "Birim ÝD")]
         public Nullable<int> Birim_ID { get; set; }
     
         public virtual Birim Birim { get; set; }
         public virtual Cari Cari { get; set; }
-        public virtual FaturaSatirlari FaturaSatirlari { get; set; }
         public virtual Kullanici Kullanici { get; set; }
-        
-        public IEnumerable<SelectListItem> ListOfCari { get;  set; }
-   
-        public IEnumerable<SelectListItem> ListOfKullanici { get;  set; }
-        public IEnumerable<SelectListItem> ListOfBirim { get; set; }
-        public List<FaturaSatirlari> ListOfFaturaSatirlari { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FaturaSatirlari> FaturaSatirlaris { get; set; }
     }
 }

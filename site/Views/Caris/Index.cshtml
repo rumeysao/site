@@ -13,10 +13,16 @@
 </head>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300" rel="stylesheet">
 
-<p>
-    @Html.ActionLink("Yeni Ekle", "Create")
-</p>
 
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <h2 class="panel-title pull-left" style="margin-left:10px;">
+                <strong>Cari İşlemleri</strong>
+            </h2>
+            <button style="margin-right:10px" class="btn btn-primary pull-right" onclick="addNewOrder()">Cari Girişi</button>
+        </div>
+    </div>
 
     <table id="personel">
         <tr>
@@ -53,16 +59,170 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Sehir)
+                </td>    <td>
+                    @Html.DisplayFor(modelItem => item.Ilce)
                 </td>
 
                 <td>
 
                     @Html.ActionLink("Güncelle", "Edit", new { id = item.Cari_ID })
                     @Html.ActionLink("İncele", "Details", new { id = item.Cari_ID })
-                    @Html.ActionLink("Sil", "Delete", new { id = item.Cari_ID })
+                
 
                 </td>
             </tr>
         }
     </table>
 
+</div>
+ <div class="modal fade" id="newOrderModal">
+<div class="modal-dialog modal-lg" style=" width: 900px !important;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <a href="#" class="close" data-dismiss="modal">&times;</a>
+            <h4>Yeni Cari Girişi</h4>
+        </div>
+        <form id="NewOrderForm">
+            <div class="modal-body">
+                @*Cari Details*@
+                <h5 style="color:#ff6347">Cari Detayları</h5>
+                <hr />
+                <div class="form-horizontal">
+                    <input type="hidden" id="Cari_ID" />
+                    <div class="form-group">
+                        <label class="control-label col-md-2">
+                            Cari Kodu
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="CariKodu" name="CariKodu" placeholder="Cari Kodu" class="form-control" />
+                        </div>
+                        <label class="control-label col-md-2">
+                            Tanım
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="Tanim" name="Tanim" placeholder="Tanım" class="form-control" />
+                        </div>
+                        <label class="control-label col-md-2">
+                            Ülke
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="Ulke" name="Ulke" placeholder="Ülke" class="form-control" />
+                        </div>
+                        <label class="control-label col-md-2">
+                            Şehir
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="Sehir" name="Sehir" placeholder="Şehir" class="form-control" />
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">
+                            Müşteri Ünvanı
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="Tanim" name="Tanim" placeholder="Cari" class="form-control" />
+                        </div>
+
+                    </div>
+                </div>
+
+                @*Cari Detay*@
+
+
+
+
+                <h5 style="margin-top:10px;color:#ff6347">CARİ</h5>
+                <hr />
+                <div class="form-horizontal">
+                    <input type="hidden" id="id" />
+                    <div class="form-group">
+                        <label class="control-label col-md-2">
+                            Adres
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="Adres" name="Adres" placeholder="Adres Giriniz" class="form-control" />
+                        </div>
+                        <label class="control-label col-md-2">
+                            İlçe
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="Ilce" name="Ilce" placeholder="İlçe" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">
+                            Telefon Numarası
+                        </label>
+                        <div class="col-md-4">
+                            <input type="tel" id="Tel" name="Tel" placeholder="Telefon Numarası" class="form-control" />
+                        </div>
+                        <label class="control-label col-md-2">
+                            Fax Numarası
+                        </label>
+                        <div class="col-md-4">
+                            <input type="tel" id="Fax" name="Fax" placeholder="Fax Numarası Giriniz" class="form-control" />
+                        </div>
+                        <label class="control-label col-md-2">
+                            E-mail
+                        </label>
+                        <div class="col-md-4">
+                            <input type="email" id="Email" name="Email" placeholder="E-posta" class="form-control" />
+                        </div>
+                        <label class="control-label col-md-2">
+                            Web Adresi
+                        </label>
+                        <div class="col-md-4">
+                            <input type="url" id="Web" name="Web" placeholder="Web adres" class="form-control" />
+                        </div>
+                        <label class="control-label col-md-2">
+                            Posta Kodu
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="PostaKodu" name="PostaKodu" placeholder="Posta Kodu" class="form-control" />
+                        </div>
+                        <label class="control-label col-md-2">
+                            Aktif
+                        </label>
+                        <div class="col-md-4">
+                            <input type="checkbox" id="Aktif" name="Aktif" placeholder="Aktif" class="form-control" />
+                        </div>
+                        <div class="col-md-2 col-lg-offset-4">
+                            <a id="addToList" class="btn btn-primary">Listeye Ekle</a>
+                        </div>
+
+                    </div>
+
+                    <table id="detailsTable" class="table">
+                        <thead>
+                            <tr>
+                                <th style="width:30%">Adres</th>
+                                <th style="width:20%">İlçe</th>
+                                <th style="width:15%">Telefon Numarası</th>
+                                <th style="width:15%">Fax Numarası</th>
+                                <th style="width:25%">E-mail</th>
+                                <th style="width:25%">Web Adresi</th>
+                                <th style="width:25%">Posta Kodu</th>
+                                <th style="width:25%">Aktif</th>
+
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                <button id="saveOrder" type="submit" class="btn btn-danger">Cariyi Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+     </div>
+<script>
+    function addNewOrder() {
+        $("#newOrderModal").modal();
+    }
+</script>

@@ -9,7 +9,7 @@ namespace site.Helpers
 {
     public class OrtakSinif
     {
-        veri db = new veri();
+        veriEntities db = new veriEntities();
         public static bool EditIzinYetkiVarmi(int id,Kullanici user)
         {
             if (user.Kullanici_ID == id)

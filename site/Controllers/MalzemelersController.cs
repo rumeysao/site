@@ -12,7 +12,7 @@ namespace site.Controllers
 {
     public class MalzemelersController : Controller
     {
-        private veri db = new veri();
+        private veriEntities db = new veriEntities();
 
         // GET: Malzemelers
         public ActionResult Index()

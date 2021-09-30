@@ -10,7 +10,7 @@ namespace site.Controllers
 {
     public class KullaniciController : YetkiliController
     {
-        veri db = new veri();
+        veriEntities db = new veriEntities();
         // GET: Kullanici
         public ActionResult Index()
         {

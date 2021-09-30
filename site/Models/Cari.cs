@@ -20,60 +20,45 @@ namespace site.Models
         {
             this.Faturas = new HashSet<Fatura>();
         }
-        [Display(Name ="Cari Ýd")]
+        [Display(Name = "Cari ÝD")]
         public int Cari_ID { get; set; }
         [Display(Name = "Cari Kodu")]
-
         public string CariKodu { get; set; }
         [Display(Name = "Taným")]
-
         public string Tanim { get; set; }
-       
-
+        [Display(Name = "Adres")]
         public string Adres { get; set; }
         [Display(Name = "Ülke")]
-
-
         public string Ulke { get; set; }
         [Display(Name = "Þehir")]
-
         public string Sehir { get; set; }
         [Display(Name = "Ýlçe")]
-
         public string Ilce { get; set; }
+
         [Display(Name = "Telefon Numarasý")]
-
-        [Required(ErrorMessage ="Lütfen bu alaný boþ geçmeyiniz.")]
-       [DataType(DataType.PhoneNumber,ErrorMessage ="Lütfen geçerli formatta bilgi giriniz.")]
+        [DataType(DataType.PhoneNumber)]
         public Nullable<int> Tel { get; set; }
-        [Display(Name = "Fax numarasý")]
-
+        [Display(Name = "Fax Numarasý")]
         public Nullable<int> Fax { get; set; }
-        [Display(Name = "E-mail")]
-
+        [Display(Name = "E-posta")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Display(Name = "Web Adresi")]
-
         public string Web { get; set; }
         [Display(Name = "Posta Kodu")]
-
         [DataType(DataType.PostalCode)]
+
         public Nullable<int> PostaKodu { get; set; }
-        
-
+        [Display(Name = "Aktif")]
         public Nullable<bool> Aktif { get; set; }
-        [Display(Name = "Datura Satýrlarý Ýd")]
-
+        [Display(Name = "Fatura Satýrlarý ÝD")]
         public Nullable<int> FaturaSatirlari_ID { get; set; }
-        [Display(Name = "Kullanýcý Ýd")]
-
+        [Display(Name = "Kullanýcý ÝD")]
         public Nullable<int> Kullanici_ID { get; set; }
     
         public virtual FaturaSatirlari FaturaSatirlari { get; set; }
         public virtual Kullanici Kullanici { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fatura> Faturas { get; set; }
-        public List<Cari> ListOfCari { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace site.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class veri : DbContext
+    public partial class veriEntities : DbContext
     {
-        public veri()
-            : base("name=veri")
+        public veriEntities()
+            : base("name=veriEntities")
         {
         }
     

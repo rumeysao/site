@@ -12,12 +12,12 @@ namespace site.Controllers
 {
     public class FaturasController : Controller
     {
-        private veri db = new veri();
+        private veriEntities db = new veriEntities();
 
         // GET: Faturas
         public ActionResult Index()
         {
-            var faturas = db.Faturas.Include(f => f.Birim).Include(f => f.Cari).Include(f => f.FaturaSatirlari).Include(f => f.Kullanici);
+            var faturas = db.Faturas.Include(f => f.Birim).Include(f => f.Cari).Include(f => f.Kullanici);
             return View(faturas.ToList());
         }
 
@@ -41,7 +41,7 @@ namespace site.Controllers
         {
             ViewBag.Birim_ID = new SelectList(db.Birims, "Birim_ID", "BirimKodu");
             ViewBag.Cari_ID = new SelectList(db.Caris, "Cari_ID", "CariKodu");
-            ViewBag.FaturaSatirlari_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Aciklama");
+           
             ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi");
             return View();
         }
@@ -51,7 +51,7 @@ namespace site.Controllers
         // daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Fatura_ID,FaturaSeriNo,FaturaSiraNo,Saat,Tarih,Tutar,Cari_ID,Kullanici_ID,FaturaSatirlari_ID,Birim_ID")] Fatura fatura)
+        public ActionResult Create([Bind(Include = "Fatura_ID,FaturaSeriNo,FaturaSiraNo,Saat,Tarih,Tutar,Cari_ID,Kullanici_ID,Birim_ID")] Fatura fatura)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace site.Controllers
 
             ViewBag.Birim_ID = new SelectList(db.Birims, "Birim_ID", "BirimKodu", fatura.Birim_ID);
             ViewBag.Cari_ID = new SelectList(db.Caris, "Cari_ID", "CariKodu", fatura.Cari_ID);
-            ViewBag.FaturaSatirlari_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Aciklama", fatura.FaturaSatirlari_ID);
+           
             ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", fatura.Kullanici_ID);
             return View(fatura);
         }
@@ -81,7 +81,7 @@ namespace site.Controllers
             }
             ViewBag.Birim_ID = new SelectList(db.Birims, "Birim_ID", "BirimKodu", fatura.Birim_ID);
             ViewBag.Cari_ID = new SelectList(db.Caris, "Cari_ID", "CariKodu", fatura.Cari_ID);
-            ViewBag.FaturaSatirlari_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Aciklama", fatura.FaturaSatirlari_ID);
+            
             ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", fatura.Kullanici_ID);
             return View(fatura);
         }
@@ -91,7 +91,7 @@ namespace site.Controllers
         // daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Fatura_ID,FaturaSeriNo,FaturaSiraNo,Saat,Tarih,Tutar,Cari_ID,Kullanici_ID,FaturaSatirlari_ID,Birim_ID")] Fatura fatura)
+        public ActionResult Edit([Bind(Include = "Fatura_ID,FaturaSeriNo,FaturaSiraNo,Saat,Tarih,Tutar,Cari_ID,Kullanici_ID,Birim_ID")] Fatura fatura)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace site.Controllers
             }
             ViewBag.Birim_ID = new SelectList(db.Birims, "Birim_ID", "BirimKodu", fatura.Birim_ID);
             ViewBag.Cari_ID = new SelectList(db.Caris, "Cari_ID", "CariKodu", fatura.Cari_ID);
-            ViewBag.FaturaSatirlari_ID = new SelectList(db.FaturaSatirlaris, "Faturasatirlari_ID", "Aciklama", fatura.FaturaSatirlari_ID);
+          
             ViewBag.Kullanici_ID = new SelectList(db.Kullanicis, "Kullanici_ID", "KullaniciAdi", fatura.Kullanici_ID);
             return View(fatura);
         }

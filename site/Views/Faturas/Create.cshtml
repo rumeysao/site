@@ -6,7 +6,32 @@
 }
 
 
+<script type="text/javascript">
 
+
+
+    function faturaekle() {
+        var birimid = $("#ddbirim").val();
+
+
+        var fiyat = $("#txtfiyat").val();
+        var miktar = $("#txtmiktar").val();
+
+        var birim = $("ddbirim option:selected").text();
+
+
+        var kdv = $("#txtkdv").val();
+        var tutar = (parseFloat(fiyat) * parseInt(miktar) * (parseFloat(kdv) / 100)) + (parseFloat(fiyat) * parseInt(miktar));
+        $("#txttutar").append(tutar);
+
+
+    }
+    function removefatura(rowValue) {
+        $(rowValue).closest('tr').remove();
+    }
+
+     }
+</script>
 
 @using (Html.BeginForm()) 
 {
@@ -57,23 +82,7 @@
             @Html.ValidationMessageFor(model => model.FaturaSatirlari.KDV, "", new { @class = "text-danger" })
         </div>
     </div>
-    <div class="form-group">
-        <div class="control-label col-md-2"><b>Tutar</b></div>
-
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Tutar, new { htmlAttributes = new { @class = "form-control", @id = "txttutar" } })
-            @Html.ValidationMessageFor(model => model.Tutar, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="control-label col-md-2"><b>Tutar</b></div>
-
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Tutar, new { htmlAttributes = new { @class = "form-control", @id = "txttutar" } })
-            @Html.ValidationMessageFor(model => model.Tutar, "", new { @class = "text-danger" })
-        </div>
-    </div>
+ 
     <div class="form-group">
         <div class="control-label col-md-2"><b>Fatura Satırları</b></div>
         <div class="col-md-10">
@@ -99,7 +108,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Kaydet" class="btn btn-default" />
+            <input type="submit" value="Kaydet" onclick="faturaekle()" class="btn btn-default" />
         </div>
     </div>
 </div>

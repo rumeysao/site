@@ -10,9 +10,22 @@
       
         
         function faturaekle() {
+            var birimid = $("#ddbirim").val();
+            var tablo = $("#tablofatura").find("tr:gt(0)");
+            $.each(tablo, function () {
+
+                var listelebirimid = $(this).find("td:eq(0)").text();
+                var listelebirim = $(this).find("td:eq(1)").text();
+                if (listelebirimid === Birim_ID) {
+                    alert('Birim: ' + listelebirim + 'çoktan listelendi.');
+                    return ;
+
+                }
+            });
+
             var fiyat = $("#txtfiyat").val();
             var miktar = $("#txtmiktar").val();
-            var birimid = $("#ddbirim").val();
+            
             var birim = $("ddbirim option:selected").text();
 
 
@@ -22,9 +35,32 @@
                 var rowValue = "<tr><td>" + birimid+"</td><td>" + fiyat + "</td><td>" + miktar + "</td><td>" + birim + "</td><td>" +
                 kdv + "</td><td>" + tutar + "</td><td>" + "<input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='removefatura(birimid)' /></td></tr>";
             $("#tablofatura").append(rowValue);
+            
 
         }
+        function removefatura(rowValue) {
+            $(rowValue).closest('tr').remove();
+        }
 
+        function sil() {
+
+            $("#txtseri").val('');
+            $("#txtsira").val('');
+            $("#ddcari").val(1); 
+            $("#txtfiyat").val('');
+            $("#txtmiktar").val('');;
+            $("#txtkdv").val('');
+            $("#tablofatura").find("tr:gt(0)").remove();
+            reset()
+            $("#txtseri").focus();
+        }
+        function reset() {
+            
+             $("#txtfiyat").val('');
+             $("#txtmiktar").val('');
+             $("#ddbirim").val(1);
+             $("#txtkdv").val('');
+        }
         function veritabaninaekle() {
 
             var objfatura = {};
@@ -52,10 +88,13 @@
                 });
             objfatura.FaturaSeriNo = $("#txtseri").val();
             objfatura.FaturaSiraNo = $("#txtsira").val();
-            objfatura.Cari_ID =  $("#ddcari").val(); 
+            objfatura.Cari_ID = $("#ddcari").val();
+            objfatura.Birim_ID = $("#ddbirim").val();
             objfatura.Fiyat =  $("#txtfiyat").val();
             objfatura.Miktar = $("#txtmiktar").val();;
             objfatura.KDV = $("#txtkdv").val();
+            tablo.Tutar = $("#txttutar").val();
+            
 
             objfatura.ListOfFaturaSatirlari = ListOfFaturaSatirlari;
 
@@ -100,28 +139,30 @@
                             @Html.LabelFor(model => model.FaturaSiraNo)
                             @Html.TextBoxFor(model => model.FaturaSiraNo, htmlAttributes: new { @class = "from-control", @id = "txtsira" })
                         </div>
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(model => model.Cari_ID)
-                            @Html.DropDownListFor(model => model.Cari_ID, Model.ListOfCari, htmlAttributes: new { @class = "from-control", @id = "ddcari" })
-                        </div>
                         <fieldset>
-                            <legend>Fatura İşlemleri</legend>
-                            <div class="form-group col-md-4">
-                                @Html.LabelFor(model => model.FaturaSatirlari.Fiyat)
-                                @Html.TextBoxFor(model => model.FaturaSatirlari.Fiyat, htmlAttributes: new { @class = "form-control", @id = "txtfiyat", style = "text-align:right" })
-                            </div>
-                            <div class="form-group col-md-4">
-                                @Html.LabelFor(model => model.FaturaSatirlari.Miktar)
-                                @Html.TextBoxFor(model => model.FaturaSatirlari.Miktar, htmlAttributes: new { @class = "form-control", @id = "txtmiktar", style = "text-align:right" })
-                            </div>
-                            <div class="form-group col-md-4">
-                                @Html.LabelFor(model => model.Birim_ID)
-                                @Html.DropDownListFor(model => model.Birim_ID, Model.ListOfBirim, htmlAttributes: new { @class = "form-control", @id = "ddbirim" })
-                            </div>
-                            <div class="form-group col-md-4">
-                                @Html.LabelFor(model => model.FaturaSatirlari.KDV)
-                                @Html.TextBoxFor(model => model.FaturaSatirlari.KDV, htmlAttributes: new { @class = "form-control", @id = "txtkdv", style = "text-align:right" })
-                            </div>
+                            @*<div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Cari_ID)
+                @Html.DropDownListFor(model => model.Cari_ID, Model.ListOfCari, htmlAttributes: new { @class = "from-control", @id = "ddcari" })
+            </div>
+            <fieldset>
+                <legend>Fatura İşlemleri</legend>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.FaturaSatirlari.Fiyat)
+                    @Html.TextBoxFor(model => model.FaturaSatirlari.Fiyat, htmlAttributes: new { @class = "form-control", @id = "txtfiyat", style = "text-align:right" })
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.FaturaSatirlari.Miktar)
+                    @Html.TextBoxFor(model => model.FaturaSatirlari.Miktar, htmlAttributes: new { @class = "form-control", @id = "txtmiktar", style = "text-align:right" })
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.Birim_ID)
+                    @Html.DropDownListFor(model => model.Birim_ID, Model.ListOfBirim, htmlAttributes: new { @class = "form-control", @id = "ddbirim" })
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(model => model.FaturaSatirlari.KDV)
+                    @Html.TextBoxFor(model => model.FaturaSatirlari.KDV, htmlAttributes: new { @class = "form-control", @id = "txtkdv", style = "text-align:right" })
+                </div>*@
+
 
                             <div class="form-group">
                                 <input id="btnaddtolist" type="button" name="addtolist" value="Listeye Ekle" class="btn btn-danger" onclick="faturaekle()" />
@@ -143,11 +184,11 @@
                                         <th>
                                             KDV
                                         </th>
+                                        @*<th>
+                            @Html.DisplayFor(model => model.Tutar,new { @id = "txttutar"})
+                        </th>*@
                                         <th>
-                                            Tutar
-                                        </th>
-                                        <th>
-                                        Birim İD
+                                            Birim İD
                                         </th>
 
                                     </tr>

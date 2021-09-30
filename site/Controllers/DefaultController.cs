@@ -10,32 +10,32 @@ namespace site.Controllers
 {
     public class DefaultController : Controller
     {
-        veri objveri;
+        veriEntities objveri;
         public DefaultController()
         {
-            objveri = new veri();
+            objveri = new veriEntities();
         }
         public ActionResult Index() {
             Fatura objfatura = new Fatura();
-            objfatura.ListOfBirim = (from obj in objveri.Birims
-                                     select new SelectListItem()
-                                     {
-                                         Text = obj.BirimAdi,
-                                         Value = obj.Birim_ID.ToString()
-                                     });
-            objfatura.ListOfCari= (from obj in objveri.Caris
-                                     select new SelectListItem()
-                                     {
-                                         Text = obj.Tanim,
-                                         Value = obj.Cari_ID.ToString()
-                                     });
-            return View(objfatura);
+            ////objfatura.ListOfBirim = (from obj in objveri.Birims
+            ////                         select new SelectListItem()
+            ////                         {
+            ////                             Text = obj.BirimAdi,
+            ////                             Value = obj.Birim_ID.ToString()
+            ////                         });
+            ////objfatura.ListOfCari= (from obj in objveri.Caris
+            ////                         select new SelectListItem()
+            ////                         {
+            ////                             Text = obj.Tanim,
+            ////                             Value = obj.Cari_ID.ToString()
+            ////                         });
+          return View(objfatura);
         
         }
         [HttpPost]
         public ActionResult Index(Fatura objfatura) 
         {
-            using (var context = new veri())
+            using (var context = new veriEntities())
             {
                 var fatura = new Fatura();
                 //burda yeni bir fatura objesi oluşturup içerisini boş bırakıyoruz
@@ -46,7 +46,24 @@ namespace site.Controllers
                 // entity classımızda var olan faturas yerine bu yeni objeyi ekliyoruz
                 context.SaveChanges();
                 //en sonunda kaydediyoruz
+
+               
             }
+            //using (var context = new veriEntities())
+            //{
+            //    foreach (var item in objfatura.ListOfFaturaSatirlari)
+            //    {
+            //        FaturaSatirlari objfaturaSatirlari = new FaturaSatirlari()
+            //        {
+            //            Fiyat = item.Fiyat,
+            //            Miktar = item.Miktar,
+            //            KDV = item.KDV
+            //        };
+
+            //        context.FaturaSatirlaris.Add(objfaturaSatirlari);
+            //        context.SaveChanges();
+            //    }
+            //}
             return Json(data: objfatura, contentType: "");
         
         }

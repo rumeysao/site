@@ -24,24 +24,19 @@ namespace site.Models
             this.FaturaSatirlaris = new HashSet<FaturaSatirlari>();
             this.Malzemelers = new HashSet<Malzemeler>();
         }
-        [Display(Name = "Kullanýcý Ýd")]
-
+        [Display(Name = "Kullanýcý ÝD")]
         public int Kullanici_ID { get; set; }
-        [Required(ErrorMessage = "Bu alan boþ býrakýlamaz")]
         [Display(Name = "Kullanýcý Adý")]
-
+        
         public string KullaniciAdi { get; set; }
         [Display(Name = "Ýsim")]
-
         public string Isim { get; set; }
-        [Required(ErrorMessage ="Bu alan boþ býrakýlamaz")]
-        [DataType(DataType.Password)]
         [Display(Name = "Þifre")]
-
+        [DataType(DataType.Password)]
         public string Sifre { get; set; }
         [Display(Name = "Soy Ýsim")]
-
         public string SoyIsim { get; set; }
+     
         public Nullable<int> YetkiID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

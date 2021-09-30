@@ -12,7 +12,7 @@ namespace site.Controllers
 {
     public class BirimsController : Controller
     {
-        private veri db = new veri();
+        private veriEntities db = new veriEntities();
 
         // GET: Birims
         public ActionResult Index()
