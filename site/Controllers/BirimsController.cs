@@ -10,7 +10,7 @@ using site.Models;
 
 namespace site.Controllers
 {
-    public class BirimsController : Controller
+    public class BirimsController : YetkiliController
     {
         private veriEntities db = new veriEntities();
 

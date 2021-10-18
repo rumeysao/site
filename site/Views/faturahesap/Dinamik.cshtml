@@ -1,12 +1,12 @@
-﻿
+﻿@model site.Models.Sinif.Class1
 @{
     ViewBag.Title = "Dinamik";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Dinamik</h2>
 
-@*Adım 1*@
+
+
 <br />
 <br />
 <div class="panel panel-default">
@@ -18,52 +18,54 @@
             <button style="margin-right:10px" class="btn btn-primary pull-right" onclick="addNewOrder()">Fatura Girişi</button>
         </div>
     </div>
-    @*Fatura Listesi*@
+
 
     @foreach (var item in Model.deger1)
     {
-<div class="panel-body">
-    <table class="table table-striped table-responsive">
-        <tbody>
-            <tr>
-                <td>Seri-SıraNo : @item.FaturaSeriNo-@item.FaturaSiraNo</td>
-                <td>Cari : @item.Cari_ID</td>
-                <td>Tarih : @item.Tarih</td>
+        <div class="panel-body">
+            <table class="table table-striped table-responsive">
+                <tbody>
+                    <tr>
+                        <td>Seri-SıraNo : @item.FaturaSeriNo-@item.FaturaSiraNo</td>
+                        @*<td>Cari : @item.Cari.Tanim</td>*@
+                        <td>Tarih : @item.Tarih</td>
 
-               
-            </tr>
-            
-            <tr>
-                <td colspan="4">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th>Açıklama</th>
-                                <th>Miktar</th>
-                                <th>Fiyat</th>
-                                <th>Tutar</th>
-                                <th>KDV</th>
-                            </tr>
-                            @{ var totalBill = 0; }
-                            @foreach (var order in item.FaturaSatirlaris)
-                            {
-                                <tr>
-                                    <td>@order.Aciklama</td>
-                                    <td>@order.Miktar</td>
-                                    <td>@order.Birim</td>
-                                    <td>@order.Tutar</td>
-                                    <td>@order.KDV</td>
-                                </tr>
-totalBill = totalBill + @Convert.ToInt32(order.Tutar);
-                            }
-                        </tbody>
-                    </table>
-                    <span class="pull-right" style="margin-right:100px;"><strong>Fatura Toplam Tutar :  </strong> @totalBill</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>}
+
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Açıklama</th>
+                                        <th>Miktar</th>
+                                        <th>Fiyat</th>
+                                        <th>Tutar</th>
+                                        <th>KDV</th>
+                                    </tr>
+                                    @{ var totalBill = 0; }
+                                    @foreach (var order in item.FaturaSatirlaris)
+                                    {
+                                        <tr>
+                                            <td>@order.Aciklama</td>
+                                            <td>@order.Miktar</td>
+                                            <td>@order.Birim</td>
+                                            <td>@order.Tutar</td>
+                                            <td>@order.KDV</td>
+                                        </tr>
+                                        totalBill = totalBill + @Convert.ToInt32(order.Tutar);
+                                    }
+                                </tbody>
+                            </table>
+                            <span class="pull-right" style="margin-right:100px;"><strong>Fatura Toplam Tutar :  </strong> @totalBill</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>}
+
 </div>
 
 @*Adım 2*@
@@ -78,7 +80,7 @@ totalBill = totalBill + @Convert.ToInt32(order.Tutar);
             <form id="NewOrderForm">
                 <div class="modal-body">
                     @*Fatura Details*@
-                    <h5 style="color:#ff6347">Fatura Detayları</h5>
+                    <h5 style="color:royalblue">Fatura Detayları</h5>
                     <hr />
                     <div class="form-horizontal">
                         <input type="hidden" id="Faturaid" />
@@ -95,16 +97,32 @@ totalBill = totalBill + @Convert.ToInt32(order.Tutar);
                             <div class="col-md-4">
                                 <input type="text" id="FaturaSiraNo" name="FaturaSiraNo" placeholder="Sıra Numarası" class="form-control" />
                             </div>
+                            @*<label class="control-label col-md-2">
+                                    Müşteri Ünvanı
+                                </label>
+
+                                <div class="form-control col-md-4">
+                                    <input class="dropdown" id="carit" name="ListOfCari" placeholder="Müşteri Ünvanıv"/>
+
+
+                                </div>*@
+                            <label class="control-label col-md-2">
+                                Tarih
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="Tarih" name="Tarih" placeholder="Tarih" class="form-control" />
+                            </div>
+
                         </div>
-                    
+
 
                         <div class="form-group">
                             @*<label class="control-label col-md-2">
-                                Teslim Alan
-                            </label>
-                            <div class="col-md-4">
-                                <input type="text" id="Tanim" name="Tanim" placeholder="Cari" class="form-control" />
-                            </div>*@
+                                    Teslim Alan
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="Tanim" name="Tanim" placeholder="Cari" class="form-control" />
+                                </div>*@
                             <label class="control-label col-md-2">
                                 Toplam Tutar
                             </label>
@@ -113,8 +131,8 @@ totalBill = totalBill + @Convert.ToInt32(order.Tutar);
                             </div>
                         </div>
                     </div>
-                    @*Fatura Kalemleri*@
-                    <h5 style="margin-top:10px;color:#ff6347">Fatura Kalemleri</h5>
+
+                    <h5 style="margin-top:10px;color:royalblue">Fatura Kalemleri</h5>
                     <hr />
                     <div class="form-horizontal">
                         <input type="hidden" id="id" />
@@ -179,7 +197,8 @@ totalBill = totalBill + @Convert.ToInt32(order.Tutar);
 @*Adım 3*@
 
 @section scripts{
-    <script>//Show Modal.
+    <script>
+    //Show Modal.
         function addNewOrder() {
             $("#newOrderModal").modal();
         }
@@ -195,7 +214,9 @@ totalBill = totalBill + @Convert.ToInt32(order.Tutar);
                 KDV = $("#KDV").val(),
                 detailsTableBody = $("#detailsTable tbody");
 
-            var degerler = '<tr><td>' + Aciklama + '</td><td>' + Miktar + '</td><td>' + Birim + '</td><td>' + KDV + '</td><td>' + ((parseFloat(Birim) * parseInt(Miktar)) * (parseFloat(KDV) / 100) + (parseFloat(Birim) * parseInt(Miktar)))+ '</td><td><a data-itemId="0" href="#" class="deleteItem">Çıkar</a></td></tr>';
+            var degerler = '<tr><td>' + Aciklama + '</td><td>' + Miktar + '</td><td>' + Birim + '</td><td>' + KDV + '</td><td>'
+                + ((parseFloat(Birim) * parseInt(Miktar)) * (parseFloat(KDV) / 100) + (parseFloat(Birim) * parseInt(Miktar))) +
+                '</td><td><a data-itemId="0" href="#" class="deleteItem">Çıkar</a></td></tr>';
             detailsTableBody.append(degerler);
             clearItem();
         });
@@ -255,8 +276,8 @@ totalBill = totalBill + @Convert.ToInt32(order.Tutar);
                 FaturaSeriNo: $("#FaturaSeriNo").val(),
                 FaturasiraNo: $("#FaturasiraNo").val(),
                 Tarih: $("#Tarih").val(),
-            
-                Tanim: $("#Tanim").val(),
+
+                Tanim: $("#carit").val(),
                 Toplam: $("#Toplam").val(),
                 kalemler: orderArr
             });

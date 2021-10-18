@@ -5,112 +5,114 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
+<link href="~/Content/StyleSheet3.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,300" rel="stylesheet">
+
+<div class="modal-content">
+    <form id="NewOrderForm">
+        <div class="modal-body">
+
+            <h5 style="color:royalblue">Cari Detayları</h5>
+            <hr />
+            <div class="form-horizontal">
+
+                <table id="detailsTable" class="table">
+
+                    <thead>
+                        <tr>
+                            <th> Cari Kodu</th>
+                            <th> Müşteri Ünvanı</th>
+                            <th>Adres </th>
+                            <th> Ülke</th>
+                            <th> Şehir</th>
+                            <th>İlçe </th>
+                            <th> Telefon Numarası</th>
+                            <th> Fax Numarası</th>
+                            <th>E-mail </th>
+                            <th>  Web Adresi</th>
+                            <th> Posta Kodu </th>
+                            <th> Aktif</th>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CariKodu)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Tanim)
+                            </td>
 
 
-<div>
-    <h4>Cari</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Cari Kodu
-        </dt>
+                            <td>
+                                @Html.DisplayFor(model => model.Adres)
+                            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.CariKodu)
-        </dd>
 
-        <dt>
-            Müşteri Ünvanı
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tanim)
-        </dd>
+                            <td>
+                                @Html.DisplayFor(model => model.Ulke)
+                            </td>
 
-        <dt>
-            Adres
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Adres)
-        </dd>
+                            <td>
+                                @Html.DisplayFor(model => model.Sehir)
+                            </td>
 
-        <dt>
-            Ülke
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ulke)
-        </dd>
+                            <td>
+                                @Html.DisplayFor(model => model.Ilce)
+                            </td>
 
-        <dt>
-            Şehir
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sehir)
-        </dd>
 
-        <dt>
-            İlçe
-        </dt>
+                            <td>
+                                @Html.DisplayFor(model => model.Tel)
+                            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ilce)
-        </dd>
 
-        <dt>
-            Telefon Numarası
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tel)
-        </dd>
+                            <td>
+                                @Html.DisplayFor(model => model.Fax)
+                            </td>
+                            
 
-        <dt>
-           Fax Numarası
-        </dt>
+                            <td>
+                                @Html.DisplayFor(model => model.Email)
+                            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fax)
-        </dd>
 
-        <dt>
-           E-mail
-        </dt>
+                            <td>
+                                @Html.DisplayFor(model => model.Web)
+                            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
 
-        <dt>
-            Web Adresi
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Web)
-        </dd>
+                            <td>
+                                @Html.DisplayFor(model => model.PostaKodu)
+                            </td>
 
-        <dt>
-            Posta Kodu
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PostaKodu)
-        </dd>
 
-        <dt>
-            Aktif
-        </dt>
+                            <td>
+                                @Html.DisplayFor(model => model.Aktif)
+                            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Aktif)
-        </dd>
 
-       
 
-    </dl>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+
+            </div>
+
+        </div>
+
+    </form>
 </div>
+
 <p>
     @Html.ActionLink("Güncelle", "Edit", new { id = Model.Cari_ID }) |
     @Html.ActionLink("Geri Dön", "Index")

@@ -20,40 +20,26 @@ namespace site.Models
         {
             this.Faturas = new HashSet<Fatura>();
         }
-        [Display(Name = "Cari ÝD")]
+    
         public int Cari_ID { get; set; }
-        [Display(Name = "Cari Kodu")]
         public string CariKodu { get; set; }
-        [Display(Name = "Taným")]
         public string Tanim { get; set; }
-        [Display(Name = "Adres")]
         public string Adres { get; set; }
-        [Display(Name = "Ülke")]
         public string Ulke { get; set; }
-        [Display(Name = "Þehir")]
         public string Sehir { get; set; }
-        [Display(Name = "Ýlçe")]
         public string Ilce { get; set; }
-
-        [Display(Name = "Telefon Numarasý")]
         [DataType(DataType.PhoneNumber)]
         public Nullable<int> Tel { get; set; }
-        [Display(Name = "Fax Numarasý")]
+
         public Nullable<int> Fax { get; set; }
-        [Display(Name = "E-posta")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [Display(Name = "Web Adresi")]
         public string Web { get; set; }
-        [Display(Name = "Posta Kodu")]
         [DataType(DataType.PostalCode)]
-
+        
         public Nullable<int> PostaKodu { get; set; }
-        [Display(Name = "Aktif")]
         public Nullable<bool> Aktif { get; set; }
-        [Display(Name = "Fatura Satýrlarý ÝD")]
         public Nullable<int> FaturaSatirlari_ID { get; set; }
-        [Display(Name = "Kullanýcý ÝD")]
         public Nullable<int> Kullanici_ID { get; set; }
     
         public virtual FaturaSatirlari FaturaSatirlari { get; set; }

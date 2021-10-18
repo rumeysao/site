@@ -9,9 +9,41 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #f2f2f2;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color:black;
+                }
+
+
+    </style>
 </head>
-<body>
+<body >
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -39,16 +71,29 @@ else
                     @Html.ActionLink("Çıkış Yap", "Logout", "Kullanici", new { area = "" }, new { @class = "navbar-brand" })}
 
             </div>
-            <center>
-                <button class="w3-bar-item w3-button w3-black">@Html.ActionLink("MALZEMELER", "Index", "Malzemelers")</button>
-                <button class="w3-bar-item w3-button w3-black">@Html.ActionLink("FATURALAR", "Dinamik", "faturahesap")</button>
-                <button class="w3-bar-item w3-button w3-black">@Html.ActionLink("BİRİMLER", "Index", "Birims")</button>
-                <button class="w3-bar-item w3-button w3-black">@Html.ActionLink("CARİLER", "Index", "Caris")</button>
-            </center>
+
         </div>
 
     </div>
+    <div class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        @if (Session["username"] == null)
+        {
 
+
+        }
+        else
+        {
+            <a>@Html.ActionLink("MALZEMELER", "Index", "Malzemelers")</a>
+            <a>@Html.ActionLink("FATURALAR", "Dinamik", "faturahesap")</a>
+            <a>@Html.ActionLink("BİRİMLER", "Index", "Birims")</a>
+            <a>@Html.ActionLink("CARİLER", "Index", "Caris")</a>
+        }
+
+    </div>
+    <div id="main">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    </div>
 
 
 
@@ -59,12 +104,22 @@ else
             <p>&copy; @DateTime.Now.Year - Benim Projem</p>
         </footer>
     </div>
+    <script>
+        function openNav() {
+            document.getElementById("Sidenav").style.width = "250px";
+            document.getElementById("main").style.width = "250px";
 
+        }
+
+        function closeNav() {
+            document.getElementById("Sidenav").style.width = "0";
+            document.getElementById("main").style.width = "0";
+
+        }
+    </script>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
 
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script> 
     @RenderSection("scripts", required: false)
 </body>
 </html>

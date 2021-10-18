@@ -7,46 +7,33 @@
 
 
 
-<div>
-    <h4>Malzemeler</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Malzeme Kodu
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MalzemeKodu)
-        </dd>
-
-        <dt>
-            Malzeme Adı
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MalzemeAdi)
-        </dd>
-
-        <dt>
-            Özel Kod
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OzelKod)
-        </dd>
-
-     
-        <dt>
-            Birim Adı
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Birim.BirimAdi)
-        </dd>
-
-
-    </dl>
+<div class="modal-content">
+    <form id="NewOrderForm">
+        <div class="modal-body">
+            <h5 style="color:royalblue">Malzeme Detayları</h5>
+            <hr />
+                <div class="form-horizontal">
+                    <table id="detailsTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Malzeme Kodu</th>
+                                <th>Malzeme Adı</th>
+                                <th>Özel Kod</th>
+                                <th>Birim Adı</th>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(model => model.MalzemeKodu)</td>
+                                <td>@Html.DisplayFor(model => model.MalzemeAdi)</td>
+                                <td>@Html.DisplayFor(model => model.OzelKod)</td>                            
+                                <td>@Html.DisplayFor(model => model.Birim.BirimAdi)</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+    </form>
 </div>
+
 <p>
     @Html.ActionLink("Güncelle", "Edit", new { id = Model.Malzeme_ID }) |
     @Html.ActionLink("Geri Dön", "Index")

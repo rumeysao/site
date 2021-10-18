@@ -26,7 +26,7 @@ namespace site.Models
         public string OzelKod { get; set; }
         public Nullable<double> KDV { get; set; }
         public Nullable<System.DateTime> OlusturmaTarihi { get; set; }
-        public Nullable<System.DateTime> DuzenlemeTarihi { get; set; }
+        public Nullable<System.DateTime> DuzenlemeTarihi { get; set; } = DateTime.Now;
         public Nullable<int> Kullanici_ID { get; set; }
         public Nullable<int> Birim_ID { get; set; }
     

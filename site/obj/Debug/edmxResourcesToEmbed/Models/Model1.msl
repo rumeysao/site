@@ -44,6 +44,7 @@
           <ScalarProperty Name="Cari_ID" ColumnName="Cari_ID" />
           <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
           <ScalarProperty Name="Birim_ID" ColumnName="Birim_ID" />
+          <ScalarProperty Name="FaturaSatirlari_ID" ColumnName="FaturaSatirlari_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

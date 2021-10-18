@@ -137,6 +137,7 @@
     <Content Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </Content>
+    <Content Include="NewFolder1\ViewPage1.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -155,7 +156,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="WebForm1.aspx" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -169,12 +169,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BirimsController.cs" />
-    <Compile Include="Controllers\CarihesapController.cs" />
     <Compile Include="Controllers\CarisController.cs" />
-    <Compile Include="Controllers\DefaultCariController.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\faturahesapController.cs" />
-    <Compile Include="Controllers\FaturasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\MalzemelersController.cs" />
@@ -207,8 +203,8 @@
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Designer.cs">
@@ -221,13 +217,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -245,7 +234,6 @@
     <Content Include="Views\Kullanici\Edit.cshtml" />
     <Content Include="Views\Kullanici\Index.cshtml" />
     <Content Include="Views\Kullanici\Profil.cshtml" />
-    <Content Include="Views\Yetkili\Hata.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -268,15 +256,8 @@
     <Content Include="Views\Malzemelers\Edit.cshtml" />
     <Content Include="Views\Malzemelers\Index.cshtml" />
     <Content Include="Views\View.cshtml" />
-    <Content Include="Views\Faturas\Create.cshtml" />
-    <Content Include="Views\faturahesap\Delete.cshtml" />
-    <Content Include="Views\Faturas\Details.cshtml" />
-    <Content Include="Views\faturahesap\Edit.cshtml" />
-    <Content Include="Views\Faturas\Index.cshtml" />
-    <Content Include="Views\Default\Index.cshtml" />
-    <Content Include="Views\DefaultCari\Index.cshtml" />
     <Content Include="Views\faturahesap\Dinamik.cshtml" />
-    <Content Include="Views\Carihesap\Dinamik.cshtml" />
+    <Content Include="Views\Yetkili\Hata.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

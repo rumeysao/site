@@ -4,42 +4,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<link href="~/Content/StyleSheet3.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,300" rel="stylesheet">
+
 <h2 class="text-center text-info">@Session["username"].ToString();</h2>
+    <div class="modal-content">
 
-<div>
-    @Html.DisplayFor(model => model.Yetkilendirme.YetkiAdi)
+        <form id="NewOrderForm">
+            <div class="modal-body">
+
+                @Html.DisplayFor(model => model.Yetkilendirme.YetkiAdi)
     <hr />
-    <dl class="dl-horizontal">
+                <div class="form-horizontal">
+
+                    <table id="detailsTable" class="table">
+
+                        <thead>
+
+                            <tr>
+                                <th style="width:30%">İsim</th>
+                                <th style="width:20%">Soy İsim</th>
+                                <th style="width:25%">Şifre</th>
 
 
-        <dt>
-            İsim
-        </dt>
+                            </tr>
+                            <tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Isim)
-        </dd>
+                                <td>@Html.DisplayFor(model => model.Isim)</td>
 
-        <dt>
-            Soyİsim
-        </dt>
+                                <td>@Html.DisplayFor(model => model.SoyIsim)</td>
 
-        <dd>
-            @Html.DisplayFor(model => model.SoyIsim)
-        </dd>
+                                <td>@Html.DisplayFor(model => model.Sifre)</td>
+                            </tr>
 
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
 
-        <dt>
-            Şifre
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sifre)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Güncelle", "Edit", new { id = Model.Kullanici_ID }) |
-    @Html.ActionLink("Geri Dön", "Index","Home")
-</p>
+    </div>
+    <p>
+        @Html.ActionLink("Güncelle", "Edit", new { id = Model.Kullanici_ID }) |
+        @Html.ActionLink("Geri Dön", "Index", "Home") |
+        @Html.ActionLink("Kayıt Ol", "Create", "Home")
+    </p>

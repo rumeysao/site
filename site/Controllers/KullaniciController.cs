@@ -27,6 +27,7 @@ namespace site.Controllers
         }
         public ActionResult Profil()
         {
+
             string kullanciadi = Session["username"].ToString();
             var kisi = db.Kullanicis.Where(i => i.KullaniciAdi == kullanciadi).SingleOrDefault();
             return View(kisi);
@@ -43,11 +44,16 @@ namespace site.Controllers
         {
             string kullaniciadi = Session["username"].ToString();
             var user = db.Kullanicis.Where(i => i.KullaniciAdi == kullaniciadi).SingleOrDefault();
-            if (OrtakSinif.EditIzinYetkiVarmi(id, user))
+            if (user.YetkiID == id)
+            {
+
+                return View(user);
+            }
+            else if (user.YetkiID==1)
             {
                 var kisi = db.Kullanicis.Where(i => i.Kullanici_ID == id).SingleOrDefault();
-
                 return View(kisi);
+
             }
             return HttpNotFound();
         }
